@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informatique - Matière</title>
+    <link rel="stylesheet" href="../Shared/style.css">
+    <style>
+        .chapter-divider {
+            background: linear-gradient(135deg, var(--bg-white), var(--bg-gray-50));
+            border-radius: var(--radius-xl);
+            padding: 20px 28px;
+            margin: 30px 0 10px;
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .chapter-divider span {
+            font-size: 1.8rem;
+        }
+        .chapter-divider h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .chapter-divider p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">
+                <img src="../imgs/badri.png" alt="Logo" class="logo-image">
+                <span class="logo-text">From Bac-2-Fac</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Accueil</a>
+                <a href="../Mathematiques/math.html">Math</a>
+                <a href="../Physique/physique.html">Physique</a>
+                <a href="../Electrique/electrique.html">Électrique</a>
+                <a href="../Mecanique/mecanique.html">Mécanique</a>
+                <a href="Langues/Francais/francais.html">Français</a>
+                <a href="../Langues/Anglais/anglais.html">Anglais</a>
+                <a href="../Langues/Arabe/arabe.html">Arabe</a>
+                <a href="../Sciences-Humaines/Philosophie/philosophie.html">Philo</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="container">
+        <!-- BOUTON RETOUR -->
+        <a href="../index.html" class="back-btn">
+            ← Retour à l'accueil
+        </a>
+
+        <!-- HEADER MATIÈRE -->
+        <div class="matiere-header informatique">
+            <h1>💻 Option Informatique (Tunisie)</h1>
+            <p>Algorithmique, Python et Qt Designer — 3 leçons complètes pour le Baccalauréat Tunisien</p>
+        </div>
+
+        <!-- CHAPITRE 1 -->
+        <div class="chapter-divider">
+            <span>🧮</span>
+            <div>
+                <h3>Algorithmique & Programmation</h3>
+                <p>Les fondements de la pensée algorithmique et du Python</p>
+            </div>
+        </div>
+
+        <!-- LISTE DES LEÇONS -->
+        <h2 class="section-title">Leçons disponibles</h2>
+        <div class="cards-grid">
+            <a href="informatique-lecon1.html" class="lesson-card">
+                <span class="lesson-number">1</span>
+                <h3>Algorithmique</h3>
+                <p>Variables, conditions, boucles, fonctions — les bases de la pensée algorithmique</p>
+                <div class="lesson-badges">
+                    <span class="badge badge-audio">Podcast</span>
+                    <span class="badge badge-image">Résumé</span>
+                    <span class="badge badge-video">Vidéo</span>
+                </div>
+            </a>
+
+            <a href="informatique-lecon2.html" class="lesson-card">
+                <span class="lesson-number">2</span>
+                <h3>Python — Les bases</h3>
+                <p>Syntaxe Python, types de données, conditions, boucles, listes, dictionnaires, fonctions</p>
+                <div class="lesson-badges">
+                    <span class="badge badge-audio">Podcast</span>
+                    <span class="badge badge-image">Résumé</span>
+                    <span class="badge badge-video">Vidéo</span>
+                </div>
+            </a>
+
+            <a href="informatique-lecon3.html" class="lesson-card">
+                <span class="lesson-number">3</span>
+                <h3>Qt Designer — Interfaces graphiques</h3>
+                <p>Concevoir des interfaces avec Qt Designer et PyQt5 pour le Bac Info Tunisie</p>
+                <div class="lesson-badges">
+                    <span class="badge badge-audio">Podcast</span>
+                    <span class="badge badge-image">Résumé</span>
+                    <span class="badge badge-video">Vidéo</span>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2027 From Bac-2-Fac - Tous droits réservés<br>📧 ahmedaminebadrii@gmail.com | 📞 25080244</p>
+    </footer>
+
+    <script src="../Shared/script.js"></script>
+</body>
+</html>
