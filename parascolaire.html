@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activités Parascolaires - From Bac-2-Fac</title>
+    <style>
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1D4ED8;
+            --primary-light: #3B82F6;
+            --secondary: #0F172A;
+            --accent: #8B5CF6;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --info: #06B6D4;
+            --bg-dark: #0F172A;
+            --bg-light: #F8FAFC;
+            --bg-white: #FFFFFF;
+            --bg-gray-50: #F1F5F9;
+            --bg-gray-100: #E2E8F0;
+            --bg-gray-200: #CBD5E1;
+            --text-dark: #0F172A;
+            --text-medium: #475569;
+            --text-light: #64748B;
+            --text-white: #F8FAFC;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            --gradient-light: linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 100%);
+            --shadow: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --border-light: #E2E8F0;
+            --border-medium: #CBD5E1;
+            --radius: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--gradient-light);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* HEADER */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            padding: 12px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-image {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 8px 14px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        /* HERO */
+        .hero {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 80px 30px;
+            border-radius: var(--radius-xl);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        /* PARASCOLAIRE */
+        .parascolaire-container { max-width: 1000px; margin: 0 auto; }
+
+        /* Subject Selector */
+        .subject-selector {
+            background: linear-gradient(135deg, var(--bg-white), var(--bg-gray-50));
+            padding: 35px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 35px;
+            border: 1px solid var(--border-light);
+            text-align: center;
+        }
+
+        .subject-selector h2 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .selector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .subject-btn {
+            background: var(--bg-white);
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 18px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-medium);
+        }
+
+        .subject-btn:hover {
+            border-color: var(--primary);
+            background: rgba(37, 99, 235, 0.05);
+            transform: translateY(-3px);
+        }
+
+        .subject-btn.active {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Parascolaire Sections */
+        .parascolaire-section { display: none; animation: fadeIn 0.4s ease forwards; }
+        .parascolaire-section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .section-header h3 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Parascolaire Card */
+        .parascolaire-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .parascolaire-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+
+        .parascolaire-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .parascolaire-title h4 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Liste des Parascolaires */
+        .parascolaire-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .parascolaire-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: var(--bg-gray-50);
+            border-radius: var(--radius-lg);
+            margin-bottom: 10px;
+            transition: var(--transition);
+            border: 1px solid var(--border-light);
+        }
+
+        .parascolaire-item:last-child { margin-bottom: 0; }
+
+        .parascolaire-item:hover {
+            background: var(--bg-white);
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        /* Download Button */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: linear-gradient(135deg, var(--success), #059669);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .download-btn .icon { font-size: 1.1rem; }
+
+        /* Parascolaire Name */
+        .parascolaire-name {
+            flex: 1;
+            font-size: 1rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Expand Button */
+        .expand-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .expand-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .expand-btn .arrow { transition: transform 0.3s ease; }
+        .expand-btn.active .arrow { transform: rotate(180deg); }
+
+        /* Expandable Content */
+        .parascolaire-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 20px;
+        }
+
+        .parascolaire-content.active {
+            max-height: 1000px;
+            padding: 25px 20px;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .content-section { margin-bottom: 20px; }
+        .content-section:last-child { margin-bottom: 0; }
+
+        .content-section h5 {
+            font-size: 1rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .content-section ul { list-style: none; padding-left: 0; }
+
+        .content-section ul li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        .content-section ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .content-section p {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--gradient-dark);
+            color: var(--text-white);
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--info), var(--success));
+        }
+
+        .footer p { opacity: 0.8; font-size: 0.9rem; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 12px; }
+            .nav-links { gap: 6px; justify-content: center; }
+            .nav-links a { font-size: 0.75rem; padding: 6px 10px; }
+            .hero { padding: 50px 20px; }
+            .hero h1 { font-size: 1.8rem; }
+            .subject-selector { padding: 25px 20px; }
+            .selector-grid { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
+            .parascolaire-item { flex-wrap: wrap; }
+            .download-btn, .expand-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="imgs/badri.png" alt="Logo" class="logo-image">
+                <span class="logo-text">From Bac-2-Fac</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="Mathematiques/mathematiques.html">Maths</a>
+                <a href="Physique/physique.html">Physique</a>
+                <a href="../educatif-platform - Copie/Electrique/electrique.html">Electrique</a>
+                <a href="../educatif-platform - Copie/Mecanique/mecanique.html">Mecanique</a>
+                <a href="Langues/Francais/francais.html">Français</a>
+                <a href="Langues/Anglais/anglais.html">Anglais</a>
+                <a href="Langues/Arabe/arabe.html">Arabe</a>
+                <a href="Informatique/informatique.html">Info</a>
+                <a href="Sciences-Humaines/Philosophie/philosophie.html">Philo</a>
+              
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="container">
+        <div class="parascolaire-container">
+            <!-- Hero -->
+            <section class="hero">
+                <h1>📚 Activités Parascolaires</h1>
+                <p>Explorez les activités complémentaires pour approfondir vos connaissances</p>
+            </section>
+
+            <!-- Subject Selector -->
+            <div class="subject-selector">
+                <h2>🎯 Choisissez une matière</h2>
+                <div class="selector-grid">
+                    <button class="subject-btn active" data-subject="maths">🔢<br>Mathématiques</button>
+                    <button class="subject-btn" data-subject="physique">⚡<br>Physique</button>
+                    <button class="subject-btn" data-subject="svt">🤖<br>Electrique</button>
+                    <button class="subject-btn" data-subject="meca">🧑‍🔧<br>Mecanique </button>
+                    <button class="subject-btn" data-subject="francais">📝<br>Français</button>
+                    <button class="subject-btn" data-subject="anglais">🌐<br>Anglais</button>
+                    <button class="subject-btn" data-subject="arabe">📖<br>Arabe</button>
+                    <button class="subject-btn" data-subject="info">💻<br>Informatique</button>
+                    <button class="subject-btn" data-subject="philo">🤔<br>Philosophie</button>
+                    <button class="subject-btn" data-subject="espagnol">📝<br>Espagnol</button>
+                    <button class="subject-btn" data-subject="allemand">📝<br>Allemand</button>
+                    <button class="subject-btn" data-subject="italien">📝<br>Italien</button>
+                </div>
+            </div>
+
+            <!-- ==================== MATHÉMATIQUES ==================== -->
+            <div class="parascolaire-section active" data-subject="maths">
+                <div class="section-header">
+                    <span style="font-size: 2.2rem;">🔢</span>
+                    <div>
+                        <h3>Activités Parascolaires - Mathématiques</h3>
+                        <p>Ressources et activités pour approfondir vos compétences mathématiques</p>
+                    </div>
+                </div>
+
+                <div class="parascolaire-card">
+                    <div class="parascolaire-title">
+                        <h4>🏆 Olympiades de Mathématiques</h4>
+                    </div>
+                    <ul class="parascolaire-list">
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/17b8rlOLBM9B01a64JtwY92pBmvJqNwxm/view?usp=drive_link" class="download-btn" target="_blank">
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name"> livre scolaire </span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1ugLTqNdlsCKvfgveBBqXFkNEDyQpp3Za/view?usp=drive_link" class="download-btn" target="_blank">
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">correction livre scolaire t 1</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1adj3E8uydwr_oP-ty_qLNP8VmMKh8hyV/view?usp=drive_link" class="download-btn" target="_blank">
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">correction livre scolaire t 2</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/17eYBfb7fbuHulLT0ZWiH1OjJX-zEB0dR/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">pen</span>
+                        </li>
+                       
+                        
+
+                        
+                    </ul>
+                </div>
+            </div>
+                
+            <!-- ==================== PHYSIQUE ==================== -->
+            <div class="parascolaire-section" data-subject="physique">
+                <div class="section-header">
+                    <span style="font-size: 2.2rem;">⚡</span>
+                    <div>
+                        <h3>Activités Parascolaires - Physique</h3>
+                        <p>Explorez le monde de la physique avec des activités pratiques et théoriques</p>
+                    </div>
+                </div>
+
+                <div class="parascolaire-card">
+                    <div class="parascolaire-title">
+                        <h4>🔬 Olympiades de Physique</h4>
+                    </div>
+                    <ul class="parascolaire-list">
+                        
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1SmF4lxnkI2H4ia0JQkQuDVwJsBJpz8_M/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">Pilote_physique_Bac_sc_expe</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+                
+
+            <!-- ==================== electrique ==================== -->
+            <div class="parascolaire-section" data-subject="svt">
+                <div class="section-header">
+                    <span style="font-size: 2.2rem;">🔬</span>
+                    <div>
+                        <h3>Activités Parascolaires - Electrique</h3>
+                      
+                    </div>
+                </div>
+
+                <div class="parascolaire-card">
+                    <div class="parascolaire-title">
+                        <h4>🌿 Club Nature et Environnement</h4>
+                    </div>
+                    <ul class="parascolaire-list">
+                        
+                        
+                        <li class="parascolaire-item">
+                            <a href="" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">SVT4_Special_Doc_Qcm.pdf</span>
+                        </li>
+                        
+
+                    </ul>
+                </div>
+
+                
+            </div>
+            <!-- ==================== Mecanique ==================== -->
+            <div class="parascolaire-section" data-subject="meca">
+                <div class="section-header">
+                    <span style="font-size: 2.2rem;">🔬</span>
+                    <div>
+                        <h3>Activités Parascolaires - mecanique</h3>
+                      
+                    </div>
+                </div>
+
+                <div class="parascolaire-card">
+                    <div class="parascolaire-title">
+                        <h4>🌿 Club Nature et Environnement</h4>
+                    </div>
+                    <ul class="parascolaire-list">
+                        
+                        
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1i39soEZ5T_y5DpzgHt3qS2YovGHppJLG/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">livre scolaire</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1MgVXIG_enX1mpx9-Z1a3-FjbhojLsfgo/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">tst4</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1i39soEZ5T_y5DpzgHt3qS2YovGHppJLG/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">livre scolaire</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1yMmcuBnPPwXr07X7VpFkdlpGZefs7_1L/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">technologie genie Mecanique</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1DhFv1aDn94ZaaX1m5GyNxke7No0f44IA/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">le progrés</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1d0x228hRdiO1UpioYDgXm8H0x18OHrKa/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">bac org tn</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1lPNyF6AiX905dScoGRTdy2rrAWSfZhuS/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">cour Mecanique</span>
+                        </li>
+                        
+
+                    </ul>
+                </div>
+
+                
+            </div>
+
+            <!-- ==================== FRANÇAIS ==================== -->
+            <div class="parascolaire-section" data-subject="francais">
+                <div class="section-header">
+                    <span style="font-size: 2.2rem;">📝</span>
+                    <div>
+                        <h3>Activités Parascolaires - Français</h3>
+                        <p>Explorez la richesse de la langue et de la littérature françaises</p>
+                    </div>
+                </div>
+
+                <div class="parascolaire-card">
+                    <div class="parascolaire-title">
+                        <h4>✍️ Club de Lecture et Critique</h4>
+                    </div>
+                    <ul class="parascolaire-list">
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1TpmV1ibU7_o9zoQ5QnnW6c2KBf08Gbjh/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">Essentiel-des-pièges-et-difficultés-FrenchPDF.</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/16gVVXwlP4_xG2uL5vUcQYPQF5dqOqlpa/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">Expression-française-écrite-et-orale-FrenchPDF.pdf</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1XpqbX_Xhjl7REnHqE4pbqXRVLhTHK-1w/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <a href="https://drive.google.com/file/d/1ocbxHy7u7TuyITs0vIuswTXx_PAggcxA/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger son correction</span>
+                            </a>
+                            <span class="parascolaire-name">Rencontre</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1mDHkTQ9RwS7cXKlVeaT9HOf8yhcBt_ig/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">Grammaire-Français-Pour-Nuls-FrenchPDF.pdf</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1WzjbePr45qRAwkYwMacoAzzmRPEbnNpp/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">La_vocabulaire_et_ses_pi_232_ges.pdf</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1RQLGb1cEWvjYlMCN9FTJ7axJcyqTLFMt/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">Le français en images.pdf</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1JdAn57mdQEdyXN9-zij2eDAEXCiGOIZn/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">Lorthographe-haut-la-main-FrenchPdf.pdf</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1QugSthQDfU33aLSJSHGUzhNU6dlT5D5-/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">magazine-francais-grammaire.pdf</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="#" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">Fiches Œuvres Classiques</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1heX2RwiC2HkS71lDUZj5xd1zkOyhme4n/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">Outils pour le Francais.pdf</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1Wm62NlhaCCcWph30x9LGGgliJWQzYOUP/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">révision français.pdf</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1vt50foJNp_0A1GCBkEX7DHLqw5hPv1se/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">konouz najah bac</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1fp7y7H1Qd2xhZwIZ4dVRgO2Kgn7DU7F8/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">safari fr</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1cBrW6rsKc1kNtIPk3NUSes73jJWq199P/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">Passeport</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1OQowPu-0gVOyUfr65rfQ2ZOIV6cqkmaW/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">GOLDEB BAC</span>
+                        </li>
+                        
+
+                    </ul>
+                </div>
+
+               
+            </div>
+
+            <!-- ==================== ANGLAIS ==================== -->
+            <div class="parascolaire-section" data-subject="anglais">
+                <div class="section-header">
+                    <span style="font-size: 2.2rem;">🌐</span>
+                    <div>
+                        <h3>Activités Parascolaires - Anglais</h3>
+                        <p>Perfectionnez votre anglais et découvrez les cultures anglophones</p>
+                    </div>
+                </div>
+
+                <div class="parascolaire-card">
+                    <div class="parascolaire-title">
+                        <h4>🎬 English Movie Club</h4>
+                    </div>
+                    <ul class="parascolaire-list">
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/17QYULKuOZjCdm1hfV-Pq17JuYtNdD-Hk/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <a href="https://drive.google.com/file/d/1WTDBY2FIrDVQy4kd_YAohbb2-A923nqW/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger son correction</span>
+                            </a>
+                            <span class="parascolaire-name">READY....GO4</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1zrd7tTrByDeJqvGbWAERaBSVG0kccrIS/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">guide+complet+pour+apprendre+l'anglais.pdf</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1pc2ZsF3yOIJyLyyA-hA3YyQaFGxbvo6K/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">bac--pro</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1fw2jCjiUOuhTq6wgtwFFceAq9TaWu1Bx/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">révision</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/13c-avc5YRaisahX8Rn8VUWNFURC61LIw/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">Weal documents</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1pJP4mzV60v14Tj9rNcBqkByP5Rrl3jf7/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">GOLDEN BAC</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- ==================== ARABE ==================== -->
+            <div class="parascolaire-section" data-subject="arabe">
+                <div class="section-header">
+                    <span style="font-size: 2.2rem;">📖</span>
+                    <div>
+                        <h3>Activités Parascolaires - Arabe</h3>
+                        <p>Approfondissez votre maîtrise de la langue arabe et de sa littérature</p>
+                    </div>
+                </div>
+
+                <div class="parascolaire-card">
+                    <div class="parascolaire-title">
+                        <h4>🖋️ Atelier de Calligraphie Arabe</h4>
+                    </div>
+                    <ul class="parascolaire-list">
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1PV-T6l9vLFBDgZo2YbxduKBZ5_BRl6lf/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <a href="https://drive.google.com/file/d/1GpUchGbCWd47eGJVvHjmPhyLl9DxSM6C/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger son correction</span>
+                            </a>
+                            <span class="parascolaire-name">دروب التالق</span>
+                        </li>
+                         <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1vWVq7Q8DruREBDj7iWkdKw32IkVV0tng/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">GOLDEN BAC</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1T13HyY2hJ8_eEPg5T-5DyPQKmIIMODgm/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">WEAL DOCUMENTS</span>
+                        </li>
+                    </ul>
+                </div>
+
+                
+            </div>
+
+            <!-- ==================== INFORMATIQUE ==================== -->
+            <div class="parascolaire-section" data-subject="info">
+                <div class="section-header">
+                    <span style="font-size: 2.2rem;">💻</span>
+                    <div>
+                        <h3>Activités Parascolaires - Informatique</h3>
+                        <p>Développez vos compétences en programmation et technologie</p>
+                    </div>
+                </div>
+
+                <div class="parascolaire-card">
+                    <div class="parascolaire-title">
+                        <h4>🎮 Coding Club - Game Development</h4>
+                    </div>
+                    <ul class="parascolaire-list">
+                       
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1k_UDFBPVRWOczcazogERyzNRlC2l4rez/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">GOLDEN BAC</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1ERavndZgvoDG7c9Z9ZgpiBnG5b0x7Oop/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">interface graphique</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/12s1Qzc6NxtiKuSjxsoh6JpmZTCU1ye-F/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">algo + python</span>
+                        </li>
+                    </ul>
+                </div>
+
+               
+                
+            </div>
+
+            <!-- ==================== PHILOSOPHIE ==================== -->
+            <div class="parascolaire-section" data-subject="philo">
+                <div class="section-header">
+                    <span style="font-size: 2.2rem;">🤔</span>
+                    <div>
+                        <h3>Activités Parascolaires - Philosophie</h3>
+                        <p>Explorez les grandes questions et développez votre pensée critique</p>
+                    </div>
+                </div>
+
+                <div class="parascolaire-card">
+                    <div class="parascolaire-title">
+                        <h4>🎙️ Café Philosophique</h4>
+                    </div>
+                    <ul class="parascolaire-list">
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/11hvKorDuh96eH6A_QET4OlOSes2ROkGy/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">الوجيز رابعة ثانوي</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1lDvxBdmrJ2QpiYpTU68Y9-pFBC7X3kSM/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">safari.1</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1oieEZfZl9N5EM7hSAxdVTVXzcZ8qKxjX/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">safari.2</span>
+                        </li>
+                    </ul>
+                </div>
+
+                
+            </div>
+            <!-- ==================== Esp ==================== -->
+            <div class="parascolaire-section" data-subject="espagnol">
+                <div class="section-header">
+                    <span style="font-size: 2.2rem;">📖</span>
+                    <h4>les parascolaires pour l'option Espagnol</h4>
+                </div>
+
+                <div class="parascolaire-card">
+                    
+                    <ul class="parascolaire-list">
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1mPqjmeto5_xm8JIEXsC4RttfetUOQfZj/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">Practico</span>
+                        
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1ttUqhg15-g6zqaBi5V-9a8KAuhboU5bz/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a><span class="parascolaire-name">wEAL DOCUMENTS</span>
+                        </li>
+                         <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1k_eDLXnYm8LP3Y2GyE0804Q8gXN_ZewX/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a><span class="parascolaire-name">GOLDEN BAC</span>
+                        </li>
+                    </ul>
+                </div>
+
+                
+            </div>
+             <!-- ==================== allmand ==================== -->
+            <div class="parascolaire-section" data-subject="allemand">
+                <div class="section-header">
+                    <span style="font-size: 2.2rem;">📖</span>
+                    <h4>les parascolaires pour l'option allmand</h4>
+                </div>
+
+                <div class="parascolaire-card">
+                    
+                    <ul class="parascolaire-list">
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/1A4WSl4umF4SgQn4FwKGPY4dQNnC3FPla/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                            <span class="parascolaire-name">konouz najah</span>
+                        </li>
+                        <li class="parascolaire-item">
+                            <a href="" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                
+            </div>
+             <!-- ==================== Italien ==================== -->
+            <div class="parascolaire-section" data-subject="italien">
+                <div class="section-header">
+                    <span style="font-size: 2.2rem;">📖</span>
+                    <h4>les parascolaires pour l'option  italiens</h4>
+                </div>
+
+                <div class="parascolaire-card">
+                    
+                    <ul class="parascolaire-list">
+                        <li class="parascolaire-item">
+                            <a href="https://drive.google.com/file/d/10k3zC3ZZ7axyEJdGDK810gupZkqwSjej/view?usp=drive_link" class="download-btn" >
+                                <span class="icon">⬇️</span>
+                                <span>Télécharger</span>
+                            </a><span class="parascolaire-name">italiano</span>
+                        </li>
+                        
+                    </ul>
+                </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2027 From Bac-2-Fac - Tous droits réservés<br>📧 ahmedaminebadrii@gmail.com | 📞 25080244</p>
+    </footer>
+
+    <script>
+        // Subject selection functionality
+        document.querySelectorAll('.subject-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.subject-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const subject = this.dataset.subject;
+                document.querySelectorAll('.parascolaire-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.querySelector(`.parascolaire-section[data-subject="${subject}"]`).classList.add('active');
+                
+                document.querySelector('.subject-selector').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>

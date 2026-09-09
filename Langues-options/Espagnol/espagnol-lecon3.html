@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 3: Producción — Escribir textos</title>
+    <link rel="stylesheet" href="../../Shared/style.css">
+    <style>
+        .info-content { background: var(--bg-white); border-radius: var(--radius-xl); padding: 28px; margin-bottom: 28px; box-shadow: var(--shadow-md); border: 1px solid var(--border-light); }
+        .info-content h3 { color: var(--primary); font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .info-content p { margin-bottom: 12px; line-height: 1.8; color: var(--text-dark); }
+        .code-box { background: #1E1E1E; border-radius: var(--radius-lg); padding: 18px 22px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 0.95rem; color: #D4D4D4; overflow-x: auto; }
+        .code-box .code-title { font-size: 0.85rem; color: #888; margin-bottom: 8px; font-family: 'Segoe UI', sans-serif; }
+        .example-box { background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border-left: 4px solid var(--success); padding: 18px 22px; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: 16px 0; }
+        .example-box h4 { color: #166534; font-size: 0.95rem; margin-bottom: 8px; }
+        .example-box p { margin-bottom: 6px; color: #14532d; }
+        .warning-box { background: linear-gradient(135deg, #FEF9C3, #FEF08A); border-left: 4px solid var(--warning); padding: 18px 22px; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: 16px 0; }
+        .warning-box h4 { color: #B45309; font-size: 0.95rem; margin-bottom: 8px; }
+        .key-points { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin: 16px 0; }
+        .key-point { background: var(--bg-gray-50); padding: 14px; border-radius: var(--radius-lg); border: 1px solid var(--border-light); display: flex; gap: 12px; align-items: flex-start; }
+        .key-point .icon { font-size: 1.3rem; flex-shrink: 0; }
+        .key-point p { font-size: 0.88rem; margin: 0; line-height: 1.5; }
+        .toc { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border-radius: var(--radius-xl); padding: 24px; margin-bottom: 28px; border: 1px solid #BFDBFE; }
+        .toc h3 { color: #1D4ED8; margin-bottom: 14px; font-size: 1.05rem; }
+        .toc ol { padding-left: 22px; }
+        .toc li { margin-bottom: 8px; color: var(--text-dark); font-size: 0.92rem; }
+        .toc li a { color: var(--primary); font-weight: 500; }
+        .toc li a:hover { text-decoration: underline; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+        .comparison-table th { background: var(--primary); color: white; padding: 12px; text-align: left; }
+        .comparison-table td { padding: 10px; border: 1px solid var(--border-light); }
+        .comparison-table tr:nth-child(even) { background: var(--bg-gray-50); }
+        .subsection { background: #f7fafc; border-radius: 12px; padding: 18px; margin: 16px 0; border-left: 4px solid var(--primary); }
+        .subsection h4 { color: var(--primary); font-size: 1rem; margin-bottom: 10px; }
+        .subsection p { font-size: 0.9rem; line-height: 1.7; }
+        .highlight { background: #fef3c7; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+        ul { padding-left: 22px; margin: 10px 0; }
+        ul li { margin-bottom: 6px; font-size: 0.9rem; line-height: 1.6; }
+        .flex-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+        .mini-card { background: var(--bg-gray-50); padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); }
+        .mini-card strong { color: var(--primary); font-size: 0.85rem; display: block; margin-bottom: 4px; }
+        .mini-card p { font-size: 0.82rem; margin: 0; color: #555; }
+        .exercise { background: #fff5f5; border: 2px dashed #fc8181; border-radius: 12px; padding: 18px; margin: 16px 0; }
+        .exercise h4 { color: #c53030; font-size: 0.95rem; margin-bottom: 8px; }
+        .exercise p { color: #742a2a; font-size: 0.88rem; margin-bottom: 5px; }
+        .info-inline { background: #e6f3ff; border-left: 4px solid #3182ce; padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 12px 0; }
+        .info-inline p { color: #1e4e79; font-size: 0.88rem; margin: 0; }
+        .tip-box { background: #faf5ff; border-left: 4px solid #805ad5; padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 12px 0; }
+        .tip-box h4 { color: #6b46c1; font-size: 0.9rem; margin-bottom: 6px; }
+        .tip-box p { color: #44337a; font-size: 0.85rem; }
+        .structure-step { border-left: 3px solid var(--primary); padding-left: 16px; margin: 12px 0; }
+        .structure-step h4 { color: var(--primary); font-size: 0.95rem; margin-bottom: 6px; }
+        .structure-step p { margin-bottom: 4px; font-size: 0.88rem; }
+        .flow-step { display: flex; align-items: center; gap: 12px; margin: 12px 0; }
+        .flow-num { background: var(--primary); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 0.9rem; }
+        .flow-text { background: var(--bg-gray-50); padding: 12px 16px; border-radius: 10px; flex: 1; font-size: 0.9rem; }
+        .scoring-table td:nth-child(1) { font-weight: 700; color: var(--primary); width: 140px; }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <a href="../../index.html" class="logo">
+                <img src="../../imgs/badri.png" alt="Logo" class="logo-image">
+                <span class="logo-text">From Bac-2-Fac</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../../index.html">Accueil</a>
+                <a href="../../Mathematiques/mathematiques.html">Math</a>
+                <a href="../../Physique/physique.html">Physique</a>
+                <a href="../../Sciences/sciences.html">Science</a>
+                <a href="../../Langues/Francais/francais.html">Français</a>
+                <a href="../../Langues/Anglais/anglais.html">Anglais</a>
+                <a href="../../Sciences-Humaines/Philosophie/philosophie.html">Philo</a>
+                <a href="../../Langues/Arabe/arabe.html">Arabe</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="container">
+        <a href="espagnol.html" class="back-btn">← Retour à l'Option Espagnol</a>
+
+        <!-- HEADER LEÇON -->
+        <div class="lesson-header">
+            <h1>Lección 3: Producción — Escribir textos</h1>
+            <p class="breadcrumb">Espagnol > Lección 3</p>
+        </div>
+
+        <!-- PLAN -->
+        <div class="toc">
+            <h3>📋 Índice</h3>
+            <ol>
+                <li><a href="#parte1">¿Qué es la producción escrita?</a></li>
+                <li><a href="#parte2">Los criterios de evaluación en el Baccalauréat</a></li>
+                <li><a href="#parte3">Tipos de textos en el Baccalauréat</a></li>
+                <li><a href="#parte4">Planificación y estructura</a></li>
+                <li><a href="#parte5">Conectores y expresiones de tiempo</a></li>
+                <li><a href="#parte6">Expresar una opinión</a></li>
+                <li><a href="#parte7">Ejemplos y ejercicios</a></li>
+                <li><a href="#parte8">Errores frecuentes y consejos</a></li>
+                <li><a href="#parte9">Ejercicios de autoevaluación</a></li>
+            </ol>
+        </div>
+
+        <!-- PARTE 1 -->
+        <div class="info-content" id="parte1">
+            <h3>📘 1. ¿Qué es la producción escrita?</h3>
+            
+            <p>La <strong>producción escrita</strong> (Production écrite) es una parte importante del Baccalauréat. En ella debes:</p>
+            
+            <div class="key-points">
+                <div class="key-point">
+                    <span class="icon">✍️</span>
+                    <p><strong>Escribir un texto</strong> basándote en un <strong>tema</strong> o una <strong>instrucción</strong>.</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">📝</span>
+                    <p>Expresar tus <strong>ideas de forma clara</strong> y <strong>estructurada</strong>.</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">📏</span>
+                    <p>Aplicar la <strong>gramática</strong> y el <strong>vocabulario</strong> correctamente.</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">🎯</span>
+                    <p>Cumplir la <strong>tarea</strong> que se pide en la instrucción.</p>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h4>📌 Comprender la instrucción (Consigne)</h4>
+                <p>Antes de escribir, debes comprender exactamente la <strong>instrucción</strong>:</p>
+                
+                <div class="example-box">
+                    <h4>Ejemplo de instrucción del Baccalauréat</h4>
+                    <p>"Escribe una contribución para un foro sobre el tema: ¿Es bueno el internet para la escuela? Expresa tu opinión y da dos argumentos a favor y dos en contra."</p>
+                </div>
+                
+                <p>Analiza la instrucción:</p>
+                <ul>
+                    <li><strong>"Contribución para un foro"</strong> → Tipo de texto: texto de opinión en estilo de internet</li>
+                    <li><strong>"Expresa tu opinión"</strong> → Argumentos a favor y en contra</li>
+                    <li><strong>"Dos argumentos a favor"</strong> → Cantidad: exactamente 2 argumentos a favor</li>
+                    <li><strong>"Dos en contra"</strong> → Cantidad: exactamente 2 argumentos en contra</li>
+                </ul>
+            </div>
+            
+            <div class="info-inline">
+                <p><strong>📌 Palabras clave de las instrucciones:</strong> Describir (Di cómo es algo) | Narrar (Cuenta una historia) | Expresar una opinión (Di lo que piensas) | Comparar (Muestra similitudes y diferencias) | Explicar (Haz algo comprensible) | Argumentar (Da razones para tu opinión)</p>
+            </div>
+        </div>
+
+        <!-- PARTE 2 -->
+        <div class="info-content" id="parte2">
+            <h3>📗 2. Los criterios de evaluación en el Baccalauréat</h3>
+            
+            <p>Tu trabajo escrito se evalúa según <strong>cinco criterios principales</strong>:</p>
+            
+            <table class="comparison-table scoring-table">
+                <thead>
+                    <tr><th>Criterio</th><th>Qué se evalúa</th><th>Puntos</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1. Tarea</td><td>¿Has cumplido la tarea completamente?</td><td>4 puntos</td></tr>
+                    <tr><td>2. Coherencia</td><td>¿El texto está estructurado? ¿Hay conectores?</td><td>4 puntos</td></tr>
+                    <tr><td>3. Vocabulario</td><td>¿El vocabulario es variado y correcto?</td><td>4 puntos</td></tr>
+                    <tr><td>4. Gramática</td><td>¿Las reglas gramaticales se aplican correctamente?</td><td>4 puntos</td></tr>
+                    <tr><td>5. Ortografía</td><td>¿La ortografía es correcta?</td><td>4 puntos</td></tr>
+                    <tr style="background: #edf2f7; font-weight: 700;"><td colspan="2">TOTAL</td><td>20 puntos</td></tr>
+                </tbody>
+            </table>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:16px;">🔹 Explicación detallada de los criterios</h4>
+            
+            <p><strong>1. Tarea (Cumplimiento de la instrucción)</strong></p>
+            <p>Debes hacer <strong>todo</strong> lo que pide la instrucción.</p>
+            <div class="example-box">
+                <p>• Instrucción: "Nombra dos pasatiempos y explica por qué te gustan."</p>
+                <p>✗ Error: Nombrar solo un pasatiempo → <strong>2 de 4 puntos</strong></p>
+                <p>✓ Correcto: Nombrar dos pasatiempos Y explicar por qué → <strong>4 de 4 puntos</strong></p>
+            </div>
+            
+            <p style="margin-top:14px;"><strong>2. Coherencia y organización</strong></p>
+            <p>El texto debe estar <strong>estructurado lógicamente</strong>: Introducción → Cuerpo → Conclusión. Usa <strong>conectores</strong>.</p>
+            
+            <p style="margin-top:14px;"><strong>3. Vocabulario</strong></p>
+            <p>Muestra <strong>variedad</strong> en el vocabulario.</p>
+            <p>✗ "La escuela es buena. La escuela tiene muchas clases. La escuela es grande."</p>
+            <p>✓ "La escuela es excelente. Ofrece muchas asignaturas. El edificio es enorme."</p>
+            
+            <p style="margin-top:14px;"><strong>4. Gramática</strong></p>
+            <p>Presta especial atención a: conjugación verbal, artículos, casos, orden de palabras.</p>
+            
+            <p style="margin-top:14px;"><strong>5. Ortografía</strong></p>
+            <p>No olvides la <strong>ñ</strong>, los acentos y la correcta escritura.</p>
+            
+            <div class="warning-box">
+                <h4>⚠️ Descuentos frecuentes</h4>
+                <p>• Falta de introducción o conclusión → -1 punto</p>
+                <p>• No usar conectores → -1 punto</p>
+                <p>• Varios errores gramaticales → -1 a -2 puntos</p>
+                <p>• Menos de 80 palabras → -1 punto</p>
+                <p>• Tema no alcanzado → -2 puntos</p>
+            </div>
+        </div>
+
+        <!-- PARTE 3 -->
+        <div class="info-content" id="parte3">
+            <h3>📙 3. Tipos de textos en el Baccalauréat</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">📧 Textsorte 1: El correo electrónico / La carta</h4>
+            
+            <div class="structure-step">
+                <h4>1. Introducción (Saludo + Motivo)</h4>
+                <p>Querido/a [Nombre],</p>
+                <p>¿Cómo estás? Espero que estés bien. Te escribo porque...</p>
+            </div>
+            <div class="structure-step">
+                <h4>2. Cuerpo (Contenido)</h4>
+                <p>Quiero contarte que...</p>
+                <p>Primero... Luego... Además... Por último...</p>
+            </div>
+            <div class="structure-step">
+                <h4>3. Despedida (Despedida)</h4>
+                <p>¡Escríbeme pronto!</p>
+                <p>Un saludo / Con cariño,</p>
+                <p>[Tu nombre]</p>
+            </div>
+            
+            <div class="tip-box">
+                <h4>🎯 Distinguir los saludos</h4>
+                <p><strong>Informal (amigo):</strong> Querido Tomás, / Querida Sara,</p>
+                <p><strong>Formal (desconocido/institución):</strong> Estimado Sr. García, / Estimada Sra. López,</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:24px;">📄 Textsorte 2: La opinión / La contribución de foro</h4>
+            
+            <div class="structure-step">
+                <h4>1. Introducción — Presentar el tema</h4>
+                <p>El tema [X] es muy actual / importante / interesante hoy en día.</p>
+                <p>Quiero hablar sobre el tema [X] y dar mi opinión.</p>
+            </div>
+            <div class="structure-step">
+                <h4>2. Cuerpo — Argumentos a favor y en contra</h4>
+                <p><strong>Argumento 1 (A favor):</strong> Por un lado, creo que...</p>
+                <p>Además / Por otra parte...</p>
+                <p><strong>Argumento 2 (En contra):</strong> Por otro lado, opino que...</p>
+                <p>Sin embargo / No obstante...</p>
+            </div>
+            <div class="structure-step">
+                <h4>3. Conclusión — Opinión personal</h4>
+                <p>Soy de la opinión de que... (mi conclusión)</p>
+                <p>En resumen, puedo decir que...</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:24px;">📖 Textsorte 3: La narración / La historia</h4>
+            
+            <div class="structure-step">
+                <h4>1. Introducción — Tiempo, lugar, persona</h4>
+                <p>Un día... / El sábado pasado... / El año pasado...</p>
+                <p>Yo / Mi amigo / [Nombre] estaba/estaban...</p>
+            </div>
+            <div class="structure-step">
+                <h4>2. Cuerpo — Los acontecimientos</h4>
+                <p>Primero... / De repente... / Luego... / Después...</p>
+                <p>Por último... / Al final...</p>
+            </div>
+            <div class="structure-step">
+                <h4>3. Conclusión — Reacción / Moral</h4>
+                <p>Al final... / Desde entonces...</p>
+                <p>Fue una experiencia increíble / inolvidable.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:24px;">📋 Textsorte 4: La descripción</h4>
+            
+            <div class="structure-step">
+                <h4>1. Introducción — Presentar el nombre/tema</h4>
+                <p>Quiero hablar de [X]. Mi [X] se llama... Vivo en...</p>
+            </div>
+            <div class="structure-step">
+                <h4>2. Cuerpo — Detalles</h4>
+                <p>Tiene... años. Tiene... ojos / pelo.</p>
+                <p>Le gusta... Es... (personalidad)</p>
+            </div>
+            <div class="structure-step">
+                <h4>3. Conclusión</h4>
+                <p>Lo/La quiero mucho porque...</p>
+            </div>
+        </div>
+
+        <!-- PARTE 4 -->
+        <div class="info-content" id="parte4">
+            <h3>📕 4. Planificación y estructura</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">✅ El método de 5 pasos</h4>
+            
+            <div class="flow-step">
+                <div class="flow-num">1</div>
+                <div class="flow-text"><strong>Paso 1:</strong> Leer y <strong>comprender</strong> la tarea (¡lee la instrucción tres veces!)</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">2</div>
+                <div class="flow-text"><strong>Paso 2:</strong> <strong>Recoger</strong> ideas (lluvia de ideas — ¡escribe todo!)</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">3</div>
+                <div class="flow-text"><strong>Paso 3:</strong> Crear un <strong>plan</strong> (Introducción, Cuerpo, Conclusión)</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">4</div>
+                <div class="flow-text"><strong>Paso 4:</strong> <strong>Escribir</strong> el texto (¡sigue tu plan!)</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">5</div>
+                <div class="flow-text"><strong>Paso 5:</strong> <strong>Corregir</strong> el texto (¡leer de nuevo y mejorar!)</div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">📝 Ejemplo: Plan para una opinión</h4>
+            <div class="code-box">
+                <div class="code-title">Tema: ¿Deben los alumnos llevar uniforme?</div>
+                
+                <p><strong>INTRODUCCIÓN:</strong></p>
+                <p>• Saludo: "¡Hola a todos!"</p>
+                <p>• Presentar el tema: "El tema 'uniforme escolar' es muy debatido hoy en día."</p>
+                
+                <p><strong>A FAVOR (2 argumentos):</strong></p>
+                <p>• 1. Todos los alumnos son iguales — no hay diferencia entre ricos y pobres</p>
+                <p>• 2. Menos acoso por la ropa</p>
+                
+                <p><strong>EN CONTRA (2 argumentos):</strong></p>
+                <p>• 1. El uniforme es aburrido</p>
+                <p>• 2. No hay expresión de la personalidad</p>
+                
+                <p><strong>CONCLUSIÓN:</strong></p>
+                <p>• Mi opinión: Soy de la opinión de que...</p>
+                <p>• Resumen</p>
+            </div>
+        </div>
+
+        <!-- PARTE 5 -->
+        <div class="info-content" id="parte5">
+            <h3>📘 5. Conectores y expresiones de tiempo</h3>
+            
+            <p>Los <strong>conectores</strong> (palabras de enlace) son fundamentales para la <strong>coherencia</strong> de tu texto.</p>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:14px;">🔗 Conectores — Resumen</h4>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Conector</th><th>Significado</th><th>Ejemplo</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>primero</strong></td><td>d'abord</td><td>Primero debo estudiar...</td></tr>
+                    <tr><td><strong>luego / después</strong></td><td>puis / ensuite</td><td>Luego vuelvo a casa.</td></tr>
+                    <tr><td><strong>por último</strong></td><td>enfin / finalement</td><td>Por último, lo conseguí.</td></tr>
+                    <tr><td><strong>además</strong></td><td>de plus / en outre</td><td>Además, creo que es importante.</td></tr>
+                    <tr><td><strong>sin embargo</strong></td><td>cependant / pourtant</td><td>Me gusta la escuela, sin embargo estoy cansado.</td></tr>
+                    <tr><td><strong>por eso</strong></td><td>c'est pourquoi / donc</td><td>Estoy enfermo, por eso me quedo en casa.</td></tr>
+                    <tr><td><strong>porque</strong></td><td>parce que</td><td>Estudio porque quiero buenas notas.</td></tr>
+                    <tr><td><strong>por ejemplo</strong></td><td>par exemple</td><td>Me gusta el deporte, por ejemplo el fútbol.</td></tr>
+                    <tr><td><strong>por un lado... por otro</strong></td><td>d'une part... d'autre part</td><td>Por un lado..., por otro...</td></tr>
+                    <tr><td><strong>no solo... sino también</strong></td><td>non seulement... mais aussi</td><td>No solo estudio, sino que también leo.</td></tr>
+                </tbody>
+            </table>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">📅 Expresiones de tiempo para narraciones</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>Un día...</strong><p>Un jour...</p></div>
+                <div class="mini-card"><strong>De repente...</strong><p>Soudain...</p></div>
+                <div class="mini-card"><strong>Luego...</strong><p>Puis...</p></div>
+                <div class="mini-card"><strong>Después...</strong><p>Après...</p></div>
+                <div class="mini-card"><strong>Al final...</strong><p>À la fin...</p></div>
+                <div class="mini-card"><strong>Desde entonces...</strong><p>Depuis...</p></div>
+                <div class="mini-card"><strong>El sábado pasado...</strong><p>Le samedi dernier...</p></div>
+                <div class="mini-card"><strong>La mañana siguiente...</strong><p>Le lendemain matin...</p></div>
+            </div>
+            
+            <div class="tip-box">
+                <h4>🎯 ¿Cuántos conectores usar?</h4>
+                <p>Usa al menos <strong>3-4 conectores diferentes</strong> por texto. ¡Eso demuestra que dominas el idioma!</p>
+                <p>Ejemplo: "Primero me levanto. <strong>Luego</strong> desayuno. <strong>Después</strong> voy al colegio. <strong>Por último</strong> hago los deberes."</p>
+            </div>
+        </div>
+
+        <!-- PARTE 6 -->
+        <div class="info-content" id="parte6">
+            <h3>📗 6. Expresar una opinión</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">💬 Expresiones para opinar</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>Soy de la opinión de que...</strong><p>Je suis d'avis que...</p></div>
+                <div class="mini-card"><strong>En mi opinión...</strong><p>Selon moi...</p></div>
+                <div class="mini-card"><strong>Creo que...</strong><p>Je crois que...</p></div>
+                <div class="mini-card"><strong>Pienso que...</strong><p>Je pense que...</p></div>
+                <div class="mini-card"><strong>Me parece que...</strong><p>Il me semble que...</p></div>
+                <div class="mini-card"><strong>Considero que...</strong><p>Je considère que...</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">💬 Expresiones para la conclusión</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>En resumen...</strong><p>En résumé...</p></div>
+                <div class="mini-card"><strong>Todo bien considerado...</strong><p>Tout bien considéré...</p></div>
+                <div class="mini-card"><strong>Para concluir...</strong><p>Pour conclure...</p></div>
+                <div class="mini-card"><strong>En definitiva...</strong><p>En fin de compte...</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">📝 Estructura de un texto argumentativo</h4>
+            <div class="code-box">
+                <div class="code-title">Plan de ejemplo: "¿Es bueno el internet para los alumnos?"</div>
+                
+                <p><strong>INTRODUCCIÓN:</strong></p>
+                <p>El tema "Internet en la escuela" se debate mucho hoy en día.</p>
+                <p>Soy de la opinión de que el internet tiene ventajas e inconvenientes.</p>
+                
+                <p><strong>A FAVOR:</strong></p>
+                <p>• Por un lado, creo que el internet es muy útil.</p>
+                <p>• Se pueden encontrar rápidamente Informationen y aprender en línea.</p>
+                <p>• Además, se puede communiquer con profesores y amigos.</p>
+                
+                <p><strong>EN CONTRA:</strong></p>
+                <p>• Por otro lado, opino que el internet también puede ser perjudicial.</p>
+                <p>• Muchos alumnos solo juegan o ven vídeos.</p>
+                <p>• No estudian lo suficiente y sus notas empeoran.</p>
+                
+                <p><strong>CONCLUSIÓN:</strong></p>
+                <p>Soy de la opinión de que el internet es una herramienta importante, pero hay que usarla con prudencia.</p>
+                <p>En resumen, el internet es tanto bueno como malo — depende del uso que se haga.</p>
+            </div>
+        </div>
+
+        <!-- PARTE 7 -->
+        <div class="info-content" id="parte7">
+            <h3>📙 7. Ejemplos y ejercicios</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">📝 Ejemplo: Correo electrónico</h4>
+            <div class="code-box">
+                <div class="code-title">Tarea: Escribe un correo a tu amigo español.</div>
+                
+                <p>Querido Tomás:</p>
+                
+                <p>¿Cómo estás? Espero que estés bien. Te escribo porque quiero contarte cómo es mi día en el liceo.</p>
+                
+                <p>Me levanto cada mañana a las seis. Luego desayuno y voy al liceo a las siete y media. Las clases empiezan a las ocho. Tengo muchas asignaturas, pero mi favorita es el español, porque nuestro profesor es muy simpático.</p>
+                
+                <p>Por la tarde, a veces tengo educación física. Me gusta jugar al fútbol con mis amigos. El fin de semana estudio para los exámenes y paso tiempo con mi familia.</p>
+                
+                <p>¿Qué haces tú el fin de semana? ¡Escríbeme pronto!</p>
+                
+                <p>Un saludo,<br>Ahmed</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>📌 Análisis</h4>
+                <p>✓ <strong>Introducción:</strong> Saludo + Motivo (por qué escribo)</p>
+                <p>✓ <strong>Cuerpo:</strong> Día descrito de forma estructurada</p>
+                <p>✓ <strong>Conclusión:</strong> Pregunta + Despedida</p>
+                <p>✓ <strong>Conectores:</strong> luego, pero, a veces</p>
+                <p>✓ <strong>Gramática:</strong> Conjugación correcta, artículos, género</p>
+                <p>✓ <strong>Longitud:</strong> ~100 palabras</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:24px;">📝 Ejemplo: Contribución de foro</h4>
+            <div class="code-box">
+                <div class="code-title">Tema: ¿Es bueno el internet para los alumnos?</div>
+                
+                <p>El tema del internet y la escuela es muy actual hoy en día.</p>
+                
+                <p>Por un lado, creo que en el internet se puede encontrar mucha información. Se puede aprender en línea y comunicarse con profesores. Es muy práctico.</p>
+                
+                <p>Por otro lado, opino que el internet también puede ser malo. Muchos alumnos pasan demasiado tiempo con el móvil. Solo juegan o ven vídeos y no estudian lo suficiente.</p>
+                
+                <p>Soy de la opinión de que el internet es tanto bueno como malo. Depende del uso que se haga. Si se usa para estudiar, es muy útil. Pero si solo se juegan videojuegos, es malo para la escuela.</p>
+                
+                <p>En resumen, el internet es una herramienta importante, pero hay que usarlo con prudencia.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:24px;">📝 Ejemplo: Historia</h4>
+            <div class="code-box">
+                <div class="code-title">Un día encontré algo interesante...</div>
+                
+                <p>Un día fui al parque para jugar al fútbol. Primero el tiempo era bueno y encontré a mis amigos. De repente, vi algo brillante en la hierba.</p>
+                
+                <p>Me acerqué y descubrí que era una pequeña bolsa. La abrí y encontré una cartera con mucho dinero y un documento de identidad. Primero quería quedarme el dinero, pero luego pensé en mi educación.</p>
+                
+                <p>Al día siguiente fui a la oficina de objetos perdidos y entregué la bolsa. Una semana después, el propietario me llamó. Estaba muy contento y me dio las gracias.</p>
+                
+                <p>Desde entonces, estoy orgulloso de mi decisión. He aprendido que la honradez siempre es la mejor opción.</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>📌 Análisis de la historia</h4>
+                <p>✓ <strong>Introducción:</strong> Un día + escenario</p>
+                <p>✓ <strong>Cuerpo:</strong> De repente... + conflicto + solución</p>
+                <p>✓ <strong>Conclusión:</strong> Desde entonces... + moral de la historia</p>
+                <p>✓ <strong>Expresiones de tiempo:</strong> Un día, primero, de repente, luego, al día siguiente, una semana después, desde entonces</p>
+                <p>✓ <strong>Conectores:</strong> y, pero, luego</p>
+            </div>
+        </div>
+
+        <!-- PARTE 8 -->
+        <div class="info-content" id="parte8">
+            <h3>📕 8. Errores frecuentes y consejos</h3>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Error</th><th>Correcto</th><th>Explicación</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>✗ Yo <em>ir</em> a la escuela <em>en la mañana</em>.</td>
+                        <td>✓ Yo <em>voy</em> a la escuela <em>por la mañana</em>.</td>
+                        <td>Conjugación correcta + "por la mañana" (no "en la mañana")</td>
+                    </tr>
+                    <tr>
+                        <td>✗ El <em>alumnos</em> son simpáticos.</td>
+                        <td>✓ Los <em>alumnos</em> son simpáticos.</td>
+                        <td>Los sustantivos van en plural con su determinante.</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Yo <em>hacer</em> mis tareas.</td>
+                        <td>✓ Yo <em>hago</em> mis tareas.</td>
+                        <td>Conjugación: yo → hago (irregular)</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Yo juego al fútbol con <em>mi</em> amigos.</td>
+                        <td>✓ Yo juego al fútbol con <em>mis</em> amigos.</td>
+                        <td>plural: mi → mis</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Yo <em>tener</em> un perro.</td>
+                        <td>✓ Yo <em>tengo</em> un perro.</td>
+                        <td>Conjugación: yo → tengo (irregular)</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Él tiene 17 <em>años</em>.</td>
+                        <td>✓ Él tiene 17 <em>años</em>.</td>
+                        <td>Años con tilde en la "o" — ¡es obligatoria!</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Mi materia preferida es <em>el</em> español.</td>
+                        <td>✓ Mi materia preferida es <em>el</em> español.</td>
+                        <td>Los idiomas van con "el" en singular: el español, el francés</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">✅ Lista de control para el examen</h4>
+            
+            <div class="info-inline">
+                <p><strong>Antes de escribir:</strong></p>
+                <p>□ Lea la instrucción tres veces.</p>
+                <p>□ Subraye las palabras clave.</p>
+                <p>□ Cuente: ¿Cuántos argumentos? ¿Qué tipo de texto?</p>
+                <p>□ Haga un breve plan.</p>
+            </div>
+            
+            <div class="info-inline">
+                <p><strong>Mientras escribe:</strong></p>
+                <p>□ Escriba primero la introducción.</p>
+                <p>□ Use conectores.</p>
+                <p>□ Preste atención a la conjugación.</p>
+                <p>□ No olvide la ñ y los acentos.</p>
+                <p>□ Escriba al menos 80-100 palabras.</p>
+            </div>
+            
+            <div class="info-inline">
+                <p><strong>Después de escribir:</strong></p>
+                <p>□ ¿Todos los sustantivos van con su artículo?</p>
+                <p>□ ¿La conjugación es correcta?</p>
+                <p>□ ¿He cumplido todas las partes de la tarea?</p>
+                <p>□ ¿Hay introducción y conclusión?</p>
+                <p>□ ¿He usado conectores?</p>
+            </div>
+            
+            <div class="tip-box">
+                <h4>🎯 Gestión del tiempo</h4>
+                <p>• <strong>1-2 minutos:</strong> Leer y comprender la instrucción</p>
+                <p>• <strong>2-3 minutos:</strong> Lluvia de ideas y crear el plan</p>
+                <p>• <strong>10-12 minutos:</strong> Escribir el texto</p>
+                <p>• <strong>2-3 minutos:</strong> Revisar y mejorar</p>
+                <p>• <strong>Total:</strong> aproximadamente 15-20 minutos</p>
+            </div>
+        </div>
+
+        <!-- PARTE 9 -->
+        <div class="info-content" id="parte9">
+            <h3>📘 9. Ejercicios de autoevaluación</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">✏️ Ejercicio 1: Encontrar y corregir errores</h4>
+            <div class="exercise">
+                <p>"Yo ir cada día a la escuela. Yo levantar a las seis y yo tomar el desayuno. La escuela es grande y la profesores son simpáticos. Me gusta el español y la matemáticas. Por la tarde yo jugar fútbol con mi amigos."</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>✅ Versión corregida</h4>
+                <p>"Yo <strong>voy</strong> cada día a la escuela. Yo <strong>me levanto</strong> a las seis y yo <strong>tomo</strong> el desayuno. La escuela es grande y <strong>los</strong> profesores son simpáticos. Me gusta el español y <strong>la</strong> matemáticas. Por la tarde <strong>juego</strong> al fútbol con <strong>mis</strong> amigos."</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:24px;">✏️ Ejercicio 2: Escribir un correo electrónico</h4>
+            <div class="exercise">
+                <h4>Escribe un correo a tu amigo español Tomás (aproximadamente 80-100 palabras).</h4>
+                <p>Cuéntale:</p>
+                <p>• Tu nombre y edad</p>
+                <p>• Tu escuela y tus materias favoritas</p>
+                <p>• Qué haces el fin de semana</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>✅ Respuesta modelo</h4>
+                <p>Querido Tomás:</p>
+                <p>¿Cómo estás? Espero que estés bien. Te escribo para presentarme.</p>
+                <p>Me llamo Karim y tengo diecisiete años. Voy al liceo Hannibal en Túnez. Mi materia favorita es el español, porque el idioma es muy interesante. Además, me gusta mucho la matemáticas.</p>
+                <p>El fin de semana tengo más tiempo libre. Juego al fútbol con mis amigos o visito a mis abuelos. A veces también estudio para los exámenes.</p>
+                <p>¿Qué haces tú el fin de semana? ¡Escríbeme pronto!</p>
+                <p>Un saludo,<br>Karim</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:24px;">✏️ Ejercicio 3: Escribir una opinión</h4>
+            <div class="exercise">
+                <h4>Escribe una contribución para un foro sobre el tema: "¿Es bueno vivir en una gran ciudad?"</h4>
+                <p>• Da un argumento a favor</p>
+                <p>• Da un argumento en contra</p>
+                <p>• Expresa tu opinión personal</p>
+                <p>• Usa al menos 3 conectores</p>
+                <p>• Escribe aproximadamente 80-100 palabras</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>✅ Respuesta modelo</h4>
+                <p>El tema "Gran ciudad o pueblo" es muy actual hoy en día.</p>
+                <p><strong>Por un lado</strong>, creo que las grandes ciudades tienen muchas ventajas. <strong>Primero</strong>, hay mejores escuelas y universidades. <strong>Además</strong>, es más fácil encontrar trabajo.</p>
+                <p><strong>Por otro lado</strong>, opino que la vida en la gran ciudad a veces es estresante. Las viviendas son caras y el aire no es limpio. <strong>Además</strong>, hay mucho ruido y tráfico.</p>
+                <p><strong>Soy de la opinión</strong> de que se debe vivir en una gran ciudad si estudias o trabajas. <strong>En resumen</strong>, ambos lugares tienen sus ventajas y desventajas.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:24px;">✏️ Ejercicio 4: Narrar una historia</h4>
+            <div class="exercise">
+                <h4>Narra una historia corta: "El fin de semana pasado tuve una experiencia inolvidable..."</h4>
+                <p>• Usa al menos 4 expresiones de tiempo diferentes</p>
+                <p>• Escribe aproximadamente 80-100 palabras</p>
+                <p>• Cuenta en pretérito indefinido o pretérito imperfecto</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>✅ Respuesta modelo</h4>
+                <p>El fin de semana pasado tuve una experiencia inolvidable.</p>
+                <p><strong>El sábado por la mañana</strong> fui con mi familia a la playa. <strong>Primero</strong> el agua estaba fría, pero <strong>luego</strong> se calentó. <strong>De repente</strong>, mi hermano vio una tortuga en la orilla.</p>
+                <p>Llamamos a los bomberos y <strong>por último</strong> vinieron. La tortuga volvió al mar.</p>
+                <p><strong>Al final</strong> del día, todos estábamos felices. <strong>Desde entonces</strong>, me intereso más por la protección del medio ambiente.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2027 From Bac-2-Fac - Tous droits réservés<br>📧 ahmedaminebadrii@gmail.com | 📞 25080244</p>
+    </footer>
+
+    <script src="../../Shared/script.js"></script>
+</body>
+</html>

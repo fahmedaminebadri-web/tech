@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 2: Texte verstehen und beantworten</title>
+    <link rel="stylesheet" href="../../Shared/style.css">
+    <style>
+        .info-content { background: var(--bg-white); border-radius: var(--radius-xl); padding: 28px; margin-bottom: 28px; box-shadow: var(--shadow-md); border: 1px solid var(--border-light); }
+        .info-content h3 { color: var(--primary); font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .info-content p { margin-bottom: 12px; line-height: 1.8; color: var(--text-dark); }
+        .code-box { background: #1E1E1E; border-radius: var(--radius-lg); padding: 18px 22px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 0.95rem; color: #D4D4D4; overflow-x: auto; }
+        .code-box .code-title { font-size: 0.85rem; color: #888; margin-bottom: 8px; font-family: 'Segoe UI', sans-serif; }
+        .code-box .keyword { color: #569CD6; }
+        .code-box .function { color: #DCDCAA; }
+        .code-box .comment { color: #6A9955; }
+        .code-box .string { color: #CE9178; }
+        .code-box .number { color: #B5CEA8; }
+        .example-box { background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border-left: 4px solid var(--success); padding: 18px 22px; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: 16px 0; }
+        .example-box h4 { color: #166534; font-size: 0.95rem; margin-bottom: 8px; }
+        .example-box p { margin-bottom: 6px; color: #14532d; }
+        .warning-box { background: linear-gradient(135deg, #FEF9C3, #FEF08A); border-left: 4px solid var(--warning); padding: 18px 22px; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: 16px 0; }
+        .warning-box h4 { color: #B45309; font-size: 0.95rem; margin-bottom: 8px; }
+        .key-points { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin: 16px 0; }
+        .key-point { background: var(--bg-gray-50); padding: 14px; border-radius: var(--radius-lg); border: 1px solid var(--border-light); display: flex; gap: 12px; align-items: flex-start; }
+        .key-point .icon { font-size: 1.3rem; flex-shrink: 0; }
+        .key-point p { font-size: 0.88rem; margin: 0; line-height: 1.5; }
+        .toc { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border-radius: var(--radius-xl); padding: 24px; margin-bottom: 28px; border: 1px solid #BFDBFE; }
+        .toc h3 { color: #1D4ED8; margin-bottom: 14px; font-size: 1.05rem; }
+        .toc ol { padding-left: 22px; }
+        .toc li { margin-bottom: 8px; color: var(--text-dark); font-size: 0.92rem; }
+        .toc li a { color: var(--primary); font-weight: 500; }
+        .toc li a:hover { text-decoration: underline; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+        .comparison-table th { background: var(--primary); color: white; padding: 12px; text-align: left; }
+        .comparison-table td { padding: 10px; border: 1px solid var(--border-light); }
+        .comparison-table tr:nth-child(even) { background: var(--bg-gray-50); }
+        .subsection { background: #f7fafc; border-radius: 12px; padding: 18px; margin: 16px 0; border-left: 4px solid var(--primary); }
+        .subsection h4 { color: var(--primary); font-size: 1rem; margin-bottom: 10px; }
+        .subsection p { font-size: 0.9rem; line-height: 1.7; }
+        .highlight { background: #fef3c7; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+        ul { padding-left: 22px; margin: 10px 0; }
+        ul li { margin-bottom: 6px; font-size: 0.9rem; line-height: 1.6; }
+        .flex-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+        .mini-card { background: var(--bg-gray-50); padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); }
+        .mini-card strong { color: var(--primary); font-size: 0.85rem; display: block; margin-bottom: 4px; }
+        .mini-card p { font-size: 0.82rem; margin: 0; color: #555; }
+        .exercise { background: #fff5f5; border: 2px dashed #fc8181; border-radius: 12px; padding: 18px; margin: 16px 0; }
+        .exercise h4 { color: #c53030; font-size: 0.95rem; margin-bottom: 8px; }
+        .exercise p { color: #742a2a; font-size: 0.88rem; margin-bottom: 5px; }
+        .info-inline { background: #e6f3ff; border-left: 4px solid #3182ce; padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 12px 0; }
+        .info-inline p { color: #1e4e79; font-size: 0.88rem; margin: 0; }
+        .flow-step { display: flex; align-items: center; gap: 12px; margin: 12px 0; }
+        .flow-num { background: var(--primary); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 0.9rem; }
+        .flow-text { background: var(--bg-gray-50); padding: 12px 16px; border-radius: 10px; flex: 1; font-size: 0.9rem; }
+        .tip-box { background: #faf5ff; border-left: 4px solid #805ad5; padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 12px 0; }
+        .tip-box h4 { color: #6b46c1; font-size: 0.9rem; margin-bottom: 6px; }
+        .tip-box p { color: #44337a; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <a href="../../index.html" class="logo">
+                <img src="../../imgs/badri.png" alt="Logo" class="logo-image">
+                <span class="logo-text">From Bac-2-Fac</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../../index.html">Accueil</a>
+                <a href="../../Mathematiques/mathematiques.html">Math</a>
+                <a href="../../Physique/physique.html">Physique</a>
+                <a href="../../Sciences/sciences.html">Science</a>
+                <a href="../../Langues/Francais/francais.html">Français</a>
+                <a href="../../Langues/Anglais/anglais.html">Anglais</a>
+                <a href="../../Sciences-Humaines/Philosophie/philosophie.html">Philo</a>
+                <a href="../../Langues/Arabe/arabe.html">Arabe</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="container">
+        <a href="allemand.html" class="back-btn">← Retour zur Deutschen Option</a>
+
+        <!-- HEADER LEÇON -->
+        <div class="lesson-header">
+            <h1>Lektion 2: Texte verstehen und beantworten</h1>
+            <p class="breadcrumb">Allemand > Lektion 2</p>
+        </div>
+
+        <!-- PLAN -->
+        <div class="toc">
+            <h3>📋 Inhaltsverzeichnis</h3>
+            <ol>
+                <li><a href="#teil1">Leseverstehen: Was ist das?</a></li>
+                <li><a href="#teil2">Strategien für das Leseverstehen</a></li>
+                <li><a href="#teil3">Fragetypen im Baccalauréat</a></li>
+                <li><a href="#teil4">Die SQRAC-Methode</a></li>
+                <li><a href="#teil5">Beispiele und Übungen</a></li>
+                <li><a href="#teil6">Nützliche Redemittel</a></li>
+                <li><a href="#teil7">Häufige Fehler</a></li>
+                <li><a href="#teil8">Übungen zur Selbstkontrolle</a></li>
+            </ol>
+        </div>
+
+        <!-- TEIL 1 -->
+        <div class="info-content" id="teil1">
+            <h3>📘 1. Leseverstehen: Was ist das?</h3>
+            
+            <p>Das <strong>Leseverstehen</strong> (Compréhension écrite) ist ein wichtiger Teil der Baccalauréat-Prüfung. Dabei müssen Sie einen deutschen Text lesen und Fragen dazu beantworten. Es misst, wie gut Sie:</p>
+            
+            <div class="key-points">
+                <div class="key-point">
+                    <span class="icon">📖</span>
+                    <p><strong>Die Hauptidee verstehen</strong> — Worum geht es im Text?</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">🔍</span>
+                    <p><strong>Einzelne Informationen finden</strong> — Wann? Wo? Wer? Was?</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">📝</span>
+                    <p><strong>Die Bedeutung verstehen</strong> — Was meint der Autor?</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">🎯</span>
+                    <p><strong>Schlussfolgerungen ziehen</strong> — Was kann man daraus schließen?</p>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h4>📌 Textsorten im Baccalauréat</h4>
+                <p>In der tunesischen Baccalauréat-Prüfung können folgende Textsorten vorkommen:</p>
+                <ul>
+                    <li><strong>Brief / E-Mail:</strong> Informelle oder formelle Kommunikation</li>
+                    <li><strong>Artikel:</strong> Zeitungs- oder Zeitschriftenartikel</li>
+                    <li><strong>Gespräch / Dialog:</strong> Gespräch zwischen zwei oder mehr Personen</li>
+                    <li><strong>Beschreibung:</strong> Jemand oder etwas wird beschrieben</li>
+                    <li><strong>Erzählung:</strong> Eine Geschichte oder ein Erlebnis</li>
+                    <li><strong>Forum-Beitrag:</strong> Meinungsäußerung im Internet</li>
+                </ul>
+            </div>
+            
+            <div class="info-inline">
+                <p><strong>📌 Struktur eines typischen Baccalauréat-Textes:</strong> Ein Baccalauréat-Text hat normalerweise 80-150 Wörter und enthält: eine Einleitung (Wer? Was? Wo? Wann?), einen Hauptteil mit Informationen und Details, und eine Schlussfolgerung oder persönliche Meinung.</p>
+            </div>
+        </div>
+
+        <!-- TEIL 2 -->
+        <div class="info-content" id="teil2">
+            <h3>📗 2. Strategien für das Leseverstehen</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🔹 Strategie 1: Fragen ZUERST lesen</h4>
+            <p><strong>LESEN SIE IMMER DIE FRAGEN ZUERST!</strong> Das ist die wichtigste Strategie im Baccalauréat.</p>
+            
+            <div class="flow-step">
+                <div class="flow-num">1</div>
+                <div class="flow-text"><strong>Schritt:</strong> Lesen Sie die Fragen 1-5 durch, BEVOR Sie den Text lesen.</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">2</div>
+                <div class="flow-text"><strong>Schritt:</strong> Markieren Sie Schlüsselwörter in den Fragen (z.B. „Wann", „Wer", „Was", „Warum").</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">3</div>
+                <div class="flow-text"><strong>Schritt:</strong> Lesen Sie den Text und suchen Sie gezielt nach den Informationen.</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">4</div>
+                <div class="flow-text"><strong>Schritt:</strong> Beantworten Sie die Fragen.</div>
+            </div>
+            
+            <div class="example-box">
+                <h4>💡 Praktisches Beispiel</h4>
+                <p><strong>Frage:</strong> Wann geht der Schüler zur Schule?</p>
+                <p><strong>Schlüsselwort:</strong> „Wann" + „Schule" → Ich suche eine Zeitangabe + Schule im Text.</p>
+                <p><strong>Textstelle:</strong> „Ich stehe um sechs Uhr auf und gehe um halb acht zur Schule."</p>
+                <p><strong>Antwort:</strong> Er geht um halb acht zur Schule.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Strategie 2: Aktives Lesen</h4>
+            
+            <p><strong>• Schritt 1: Schnelles Überfliegen (Skimming)</strong></p>
+            <p>Lesen Sie den Text schnell (2-3 Minuten), um die <strong>Hauptidee</strong> zu verstehen:</p>
+            <ul>
+                <li>Lesen Sie die <strong>ersten</strong> und <strong>letzten Sätze</strong> jedes Absatzes</li>
+                <li>Achten Sie auf <strong>fettgedruckte</strong> oder <strong>unterstrichene</strong> Wörter</li>
+                <li>Fragen Sie sich: Worum geht es? Wer ist die Hauptperson? Was passiert?</li>
+            </ul>
+            
+            <p style="margin-top:12px;"><strong>• Schritt 2: Gezieltes Suchen (Scanning)</strong></p>
+            <p>Lesen Sie den Text noch einmal langsamer und suchen Sie nach <strong>spezifischen Informationen</strong>:</p>
+            <ul>
+                <li>Zahlen und Daten (Wann? Wie viel? Wie alt?)</li>
+                <li>Namen von Personen, Orten, Fächern</li>
+                <li>Wiederholte Wörter oder Ausdrücke</li>
+                <li>Konnektoren (aber, weil, deshalb, dann) — sie zeigen die Argumentation</li>
+            </ul>
+            
+            <div class="tip-box">
+                <h4>🎯 Konnektoren erkennen und verstehen</h4>
+                <p>• <strong>und, auch, außerdem</strong> → Ergänzung, Addition</p>
+                <p>• <strong>aber, jedoch, allerdings</strong> → Gegensatz, Einschränkung</p>
+                <p>• <strong>weil, da</strong> → Grund, Ursache</p>
+                <p>• <strong>deshalb, darum, daher</strong> → Folge, Konsequenz</p>
+                <p>• <strong>dann, danach, später</strong> → Zeitliche Abfolge</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Strategie 3: Wörter aus dem Kontext verstehen</h4>
+            <p>Sie werden auf <strong>unbekannte Wörter</strong> stoßen. Nutzen Sie den <strong>Kontext</strong>:</p>
+            
+            <div class="example-box">
+                <h4>💡 Beispiel</h4>
+                <p>„Am Morgen trinke ich Kaffee, aber ich esse Brot mit <strong>Marmelade</strong>."</p>
+                <p>Selbst wenn Sie „Marmelade" nicht kennen, können Sie es aus dem Kontext erraten: Es ist etwas, das man auf das Brot streicht.</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Zeitmanagement im Baccalauréat</h4>
+                <p>• Fragen lesen: 2 Minuten</p>
+                <p>• Text lesen (1. Mal): 3-4 Minuten (Überfliegen)</p>
+                <p>• Text lesen (2. Mal): 3-4 Minuten (Scanning)</p>
+                <p>• Fragen beantworten: 5-7 Minuten</p>
+                <p>• <strong>Gesamt:</strong> ca. 15-20 Minuten</p>
+                <p>Stoppen Sie die Wortsuche nach 30 Sekunden — machen Sie weiter!</p>
+            </div>
+        </div>
+
+        <!-- TEIL 3 -->
+        <div class="info-content" id="teil3">
+            <h3>📙 3. Fragetypen im Baccalauréat</h3>
+            
+            <p>Im tunesischen Baccalauréat gibt es <strong>fünf Haupttypen</strong> von Fragen:</p>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:14px;">🔹 Typ 1: W-Fragen</h4>
+            <p>W-Fragen beginnen mit einem <strong>W-Wort</strong>. Sie erfordern eine <strong>ausführliche Antwort</strong> in einem vollständigen Satz.</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>W-Frage</th><th>Deutsch</th><th>Französisch</th><th>Beispiel</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Wer?</strong></td><td>Person / Subjekt</td><td>Qui?</td><td>Wer schreibt den Brief?</td></tr>
+                    <tr><td><strong>Was?</strong></td><td>Sache / Aktivität</td><td>Quoi? / Que?</td><td>Was macht er am Morgen?</td></tr>
+                    <tr><td><strong>Wo?</strong></td><td>Ort</td><td>Où?</td><td>Wo wohnt er?</td></tr>
+                    <tr><td><strong>Wann?</strong></td><td>Zeit</td><td>Quand?</td><td>Wann hat er die Schule verlassen?</td></tr>
+                    <tr><td><strong>Warum?</strong></td><td>Grund</td><td>Pourquoi?</td><td>Warum lernt er Deutsch?</td></tr>
+                    <tr><td><strong>Wie?</strong></td><td>Art und Weise</td><td>Comment?</td><td>Wie fühlt er sich?</td></tr>
+                    <tr><td><strong>Wie viel?</strong></td><td>Menge / Zahl</td><td>Combien?</td><td>Wie viele Stunden lernt er?</td></tr>
+                    <tr><td><strong>Welche(r/s)?</strong></td><td>Auswahl</td><td>Quelle / Quel(le)?</td><td>Welches Fach mag er?</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Wie beantwortet man W-Fragen?</h4>
+                <p><strong>Frage:</strong> Was ist das Thema des Textes?</p>
+                <p>✗ <strong>Falsch:</strong> Schule.</p>
+                <p>✓ <strong>Richtig:</strong> Das Thema des Textes ist die Schule.</p>
+                <p>✓ <strong>Richtig:</strong> Der Text handelt von der Schule.</p>
+                <p><strong>Regel:</strong> Antworten Sie IMMER mit einem <strong>vollständigen Satz</strong>.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Typ 2: Richtig oder Falsch (Vrai ou Faux)</h4>
+            <p>Bei diesem Fragetyp müssen Sie entscheiden, ob eine Aussage <strong>richtig (wahr)</strong> oder <strong>falsch (unwahr)</strong> ist, oder ob die Information <strong>nicht im Text erwähnt</strong> wird.</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Ihre Antwort</th><th>Bedeutung</th><th>Französisch</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Richtig / Wahr</strong></td><td>Die Aussage stimmt mit dem Text überein.</td><td>Vrai</td></tr>
+                    <tr><td><strong>Falsch</strong></td><td>Die Aussage widerspricht dem Text.</td><td>Faux</td></tr>
+                    <tr><td><strong>Nicht erwähnt</strong></td><td>Der Text gibt keine Information dazu.</td><td>Non mentionné</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Vollständiges Beispiel</h4>
+                <p><strong>Text:</strong> „Mein Name ist Youssef. Ich bin 18 Jahre alt und gehe in die Oberstufe. Ich wohne in Sfax bei meiner Familie."</p>
+                <p>1. Youssef ist 17 Jahre alt. → <strong>FALSCH</strong> (Er ist 18.)</p>
+                <p>2. Youssef wohnt in Sfax. → <strong>RICHTIG</strong></p>
+                <p>3. Er hat Geschwister. → <strong>NICHT ERWÄHNT</strong></p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Häufiger Fehler</h4>
+                <p>Viele Schüler wählen zwischen nur zwei Optionen (RICHTIG oder FALSCH) und vergessen die dritte Möglichkeit: <strong>„Nicht erwähnt"</strong>.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Typ 3: Multiple Choice (Auswahlfragen)</h4>
+            
+            <div class="example-box">
+                <h4>💡 Strategie</h4>
+                <p><strong>Frage:</strong> Was ist das Thema des Textes?</p>
+                <p>a) Die Schule ✓</p>
+                <p>b) Der Sport ✗</p>
+                <p>c) Das Essen ✗</p>
+                <p>1. Lesen Sie alle drei Optionen durch.</p>
+                <p>2. Eliminieren Sie die offensichtlich falschen Optionen.</p>
+                <p>3. Vergleichen Sie die restlichen Optionen mit dem Text.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Typ 4: Fragen zur allgemeinen Bedeutung</h4>
+            <p>Diese Fragen erfordern eine <strong>persönliche Interpretation</strong> oder eine <strong>Schlussfolgerung</strong> aus dem Text.</p>
+            <ul>
+                <li>Was ist die Meinung des Autors über das Thema?</li>
+                <li>Was kann man aus dem Text schließen?</li>
+                <li>Was ist die Absicht des Autors?</li>
+                <li>Wie fühlt sich die Hauptperson?</li>
+            </ul>
+        </div>
+
+        <!-- TEIL 4 -->
+        <div class="info-content" id="teil4">
+            <h3>📕 4. Die SQRAC-Methode</h3>
+            
+            <p>Die <strong>SQRAC-Methode</strong> ist die offizielle Methode für das Leseverstehen im tunesischen Baccalauréat:</p>
+            
+            <div class="key-points">
+                <div class="key-point">
+                    <span class="icon">S</span>
+                    <p><strong>S</strong> = Suchen — Finden Sie die relevanten Informationen im Text.</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">Q</span>
+                    <p><strong>Q</strong> = Question — Verstehen Sie die Frage genau.</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">R</span>
+                    <p><strong>R</strong> = Lesen — Lesen Sie den Absatz mit der Antwort.</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">A</span>
+                    <p><strong>A</strong> = Answer — Formulieren Sie Ihre Antwort.</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">C</span>
+                    <p><strong>C</strong> = Kontrollieren — Überprüfen Sie Ihre Antwort.</p>
+                </div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:16px;">🔹 Schritt S — Suchen</h4>
+            <p><strong>Was?</strong> Finden Sie die relevanten Informationen im Text, die zur Frage passen.</p>
+            <ul>
+                <li>Lesen Sie die Frage noch einmal und unterstreichen Sie das <strong>Schlüsselwort</strong></li>
+                <li>Suchen Sie im Text nach diesem Wort oder nach <strong>synonymen Ausdrücken</strong></li>
+                <li>Lesen Sie den <strong>ganzen Absatz</strong>, nicht nur den Satz mit dem Schlüsselwort</li>
+            </ul>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:14px;">🔹 Schritt Q — Question</h4>
+            <p><strong>Was?</strong> Verstehen Sie genau, was gefragt wird.</p>
+            <ul>
+                <li>Welche Art von Frage ist es? (Wer? Was? Warum? Richtig/Falsch?)</li>
+                <li>Was genau muss ich antworten?</li>
+                <li>Gibt es eine bestimmte Anzahl von Antworten? (Z.B. „Nennen Sie zwei Gründe.")</li>
+            </ul>
+            
+            <div class="example-box">
+                <h4>💡 Beispiel</h4>
+                <p><strong>Frage:</strong> Nennen Sie <strong>zwei</strong> Hobbys von Ahmed.</p>
+                <p>Hier muss ich ZWEI Antworten geben! Nicht nur eine!</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:14px;">🔹 Schritt R — Lesen</h4>
+            <p><strong>Was?</strong> Lesen Sie den Absatz, der die Antwort enthält, vollständig.</p>
+            <ul>
+                <li>Lesen Sie nicht nur den Satz mit dem Schlüsselwort</li>
+                <li>Lesen Sie den <strong>ganzen Absatz</strong>, um den Kontext zu verstehen</li>
+                <li>Achten Sie auf <strong>Konnektoren</strong> (und, aber, weil, deshalb)</li>
+            </ul>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:14px;">🔹 Schritt A — Answer</h4>
+            <p><strong>Was?</strong> Formulieren Sie Ihre Antwort klar und vollständig.</p>
+            <ul>
+                <li>Verwenden Sie <strong>vollständige Sätze</strong>, nicht nur einzelne Wörter</li>
+                <li>Beginnen Sie mit dem <strong>Fragewort</strong> oder mit <strong>„Laut dem Text..."</strong></li>
+                <li>Kopieren Sie die Antwort <strong>nicht blind</strong> aus dem Text — fassen Sie zusammen</li>
+            </ul>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:14px;">🔹 Schritt C — Contrôler</h4>
+            <p><strong>Was?</strong> Überprüfen Sie Ihre Antwort, bevor Sie zum nächsten Thema gehen.</p>
+            <ul>
+                <li>Ist meine Antwort <strong>vollständig</strong>?</li>
+                <li>Ist meine Antwort <strong>richtig geschrieben</strong>?</li>
+                <li>Stimmt meine Antwort mit dem Text <strong>überein</strong>?</li>
+                <li>Habe ich <strong>alle Teile</strong> der Frage beantwortet?</li>
+            </ul>
+            
+            <div class="tip-box">
+                <h4>🎯 SQRAC als Eselsbrücke</h4>
+                <p><strong>S</strong> — Suchen Sie die Schlüsselwörter</p>
+                <p><strong>Q</strong> — Question — Verstehen Sie die Frage</p>
+                <p><strong>R</strong> — Read — Lesen Sie den Absatz</p>
+                <p><strong>A</strong> — Answer — Formulieren Sie die Antwort</p>
+                <p><strong>C</strong> — Check — Kontrollieren Sie Ihre Antwort</p>
+            </div>
+        </div>
+
+        <!-- TEIL 5 -->
+        <div class="info-content" id="teil5">
+            <h3>📘 5. Beispiele und Übungen</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">📖 Beispieltext: Mein Alltag</h4>
+            <div class="code-box">
+                <div class="code-title">Text: Mein Alltag</div>
+                <p>Mein Name ist Sami. Ich bin siebzehn Jahre alt und gehe in die Oberstufe eines Gymnasiums in Tunis. Jeden Morgen stehe ich um halb sechs auf. Dann dusche ich schnell und frühstücke mit meiner Familie. Um Viertel vor sieben fahre ich mit dem Bus zur Schule.</p>
+                <p>Der Unterricht beginnt um acht Uhr. Ich habe viele Fächer, aber mein Lieblingsfach ist Deutsch, weil unser Lehrer sehr geduldig ist. Am Mittag esse ich in der Schulkantine. Danach habe ich manchmal Sport oder ich treffe meine Freunde auf dem Pausenhof.</p>
+                <p>Nachmittags bin ich zu Hause. Zuerst mache ich meine Hausaufgaben. Dann lerne ich für die Prüfungen oder ich lese ein Buch. Am Abend essen wir zusammen mit der Familie. Manchmal schaue ich auch fern oder ich surfe im Internet.</p>
+                <p>Am Wochenende habe ich mehr Freizeit. Ich spiele Fußball mit meinen Freunden oder ich besuche meine Großeltern. Ich bin zufrieden mit meinem Leben, aber ich wünschte mir, mehr Zeit für meine Hobbys zu haben.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:16px;">❓ Fragen und Musterantworten</h4>
+            
+            <div class="exercise">
+                <h4>Frage 1: Wie alt ist Sami?</h4>
+                <p><strong>Antwort:</strong> Sami ist siebzehn Jahre alt.</p>
+                <p><em>Strategie: Suchen Sie nach dem Wort „siebzehn" im Text.</em></p>
+            </div>
+            
+            <div class="exercise">
+                <h4>Frage 2: Was macht Sami jeden Morgen, bevor er zur Schule fährt?</h4>
+                <p><strong>Antwort:</strong> Jeden Morgen steht Sami um halb sechs auf. Dann duscht er schnell und frühstückt mit seiner Familie.</p>
+                <p><em>Strategie: Suchen Sie nach „jeden Morgen" und lesen Sie den ganzen Satz.</em></p>
+            </div>
+            
+            <div class="exercise">
+                <h4>Frage 3: Was ist sein Lieblingsfach und warum?</h4>
+                <p><strong>Antwort:</strong> Sein Lieblingsfach ist Deutsch, weil sein Lehrer sehr geduldig ist.</p>
+                <p><em>Strategie: Suchen Sie nach „Lieblingsfach" und lesen Sie den Satz mit „weil".</em></p>
+            </div>
+            
+            <div class="exercise">
+                <h4>Frage 4: Richtig oder Falsch?</h4>
+                <p>a) Sami fährt mit dem Auto zur Schule. → <strong>FALSCH</strong> (Er fährt mit dem Bus.)</p>
+                <p>b) Am Mittag isst Sami in der Schulkantine. → <strong>RICHTIG</strong></p>
+                <p>c) Sami spielt jeden Tag Fußball. → <strong>NICHT ERWÄHNT</strong> (Nur am Wochenende.)</p>
+                <p>d) Sami ist zufrieden mit seinem Leben. → <strong>RICHTIG</strong></p>
+            </div>
+            
+            <div class="exercise">
+                <h4>Frage 5: Was wünscht sich Sami?</h4>
+                <p><strong>Antwort:</strong> Sami wünscht sich, mehr Zeit für seine Hobbys zu haben.</p>
+                <p><em>Strategie: Suchen Sie nach „wünschte" am Ende des Textes.</em></p>
+            </div>
+        </div>
+
+        <!-- TEIL 6 -->
+        <div class="info-content" id="teil6">
+            <h3>📗 6. Nützliche Redemittel</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🔹 Ausdrücke zum Einleiten der Antwort</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>Laut dem Text...</strong><p>D'après le texte...</p></div>
+                <div class="mini-card"><strong>Im Text steht, dass...</strong><p>Dans le texte, il est dit que...</p></div>
+                <div class="mini-card"><strong>Der Text berichtet, dass...</strong><p>Le texte rapporte que...</p></div>
+                <div class="mini-card"><strong>Nach dem Text...</strong><p>Selon le texte...</p></div>
+                <div class="mini-card"><strong>Dem Text zufolge...</strong><p>D'après le texte...</p></div>
+                <div class="mini-card"><strong>Wie im Text erwähnt...</strong><p>Comme mentionné dans le texte...</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Ausdrücke für Richtig/Falsch-Antworten</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>Die Aussage ist richtig.</strong><p>L'affirmation est vraie.</p></div>
+                <div class="mini-card"><strong>Die Aussage ist falsch.</strong><p>L'affirmation est fausse.</p></div>
+                <div class="mini-card"><strong>Der Text erwähnt das nicht.</strong><p>Le texte ne mentionne pas cela.</p></div>
+                <div class="mini-card"><strong>Das steht nicht im Text.</strong><p>Cela ne figure pas dans le texte.</p></div>
+                <div class="mini-card"><strong>Im Text heißt es, dass...</strong><p>Le texte dit que...</p></div>
+                <div class="mini-card"><strong>Das ist nicht dasselbe wie im Text.</strong><p>Ce n'est pas la même chose.</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Ausdrücke für Gefühle und Meinungen</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>Er ist zufrieden mit...</strong><p>Il est satisfait de...</p></div>
+                <div class="mini-card"><strong>Er ist glücklich über...</strong><p>Il est heureux de...</p></div>
+                <div class="mini-card"><strong>Er hat Angst vor...</strong><p>Il a peur de...</p></div>
+                <div class="mini-card"><strong>Er wünscht sich...</strong><p>Il souhaite / Il désire...</p></div>
+                <div class="mini-card"><strong>Er findet, dass...</strong><p>Il trouve que...</p></div>
+                <div class="mini-card"><strong>Er ist der Meinung, dass...</strong><p>Il est d'avis que...</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Ausdrücke zum Zusammenfassen</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>Das Thema des Textes ist...</strong><p>Le thème du texte est...</p></div>
+                <div class="mini-card"><strong>Der Text handelt von...</strong><p>Le texte parle de...</p></div>
+                <div class="mini-card"><strong>Im Text geht es um...</strong><p>Dans le texte, il est question de...</p></div>
+                <div class="mini-card"><strong>Zusammenfassend kann man sagen...</strong><p>En résumé, on peut dire...</p></div>
+                <div class="mini-card"><strong>Der Autor beschreibt...</strong><p>L'auteur décrit...</p></div>
+                <div class="mini-card"><strong>Die Hauptperson ist...</strong><p>Le personnage principal est...</p></div>
+            </div>
+        </div>
+
+        <!-- TEIL 7 -->
+        <div class="info-content" id="teil7">
+            <h3>📙 7. Häufige Fehler</h3>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Fehler</th><th>Richtig</th><th>Erklärung</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>✗ Schule.</td>
+                        <td>✓ Das Thema ist die Schule.</td>
+                        <td>Antworten Sie immer mit vollständigen Sätzen.</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Richtig oder Falsch — „Beides" wählen.</td>
+                        <td>✓ Wählen Sie: Richtig, Falsch oder Nicht erwähnt.</td>
+                        <td>Drei Optionen gibt es immer!</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Die Antwort blind aus dem Text kopieren.</td>
+                        <td>✓ Verstehen Sie und formulieren Sie neu.</td>
+                        <td>Zeigen Sie, dass Sie verstanden haben.</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Zu viel Zeit mit unbekannten Wörtern.</td>
+                        <td>✓ Weitergehen und den Kontext nutzen.</td>
+                        <td>Zeit ist begrenzt — priorisieren Sie!</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Nur die erste Textstelle lesen.</td>
+                        <td>✓ Lesen Sie den ganzen Absatz.</td>
+                        <td>Die Antwort kann woanders stehen.</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Ein Wort schreiben, wenn ein Satz verlangt wird.</td>
+                        <td>✓ Schreiben Sie immer einen vollständigen Satz.</td>
+                        <td>Häufiger Abzug bei der Bewertung.</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Französisch in der deutschen Antwort.</td>
+                        <td>✓ Antworten Sie auf Deutsch.</td>
+                        <td>Die Prüfungssprache ist Deutsch.</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="info-inline">
+                <p><strong>✅ Goldenen Regeln für das Leseverstehen:</strong></p>
+                <p>1. <strong>LESEN SIE DIE FRAGEN ZUERST!</strong></p>
+                <p>2. Antworten Sie mit <strong>VOLLSTÄNDIGEN SÄTZEN</strong>.</p>
+                <p>3. Es gibt <strong>DREI</strong> Möglichkeiten: Richtig, Falsch, oder Nicht erwähnt.</p>
+                <p>4. <strong>ZEITMANAGEMENT:</strong> 15-20 Minuten für das Leseverstehen.</p>
+                <p>5. <strong>ÜBERPRÜFEN</strong> Sie Ihre Antworten am Ende.</p>
+            </div>
+        </div>
+
+        <!-- TEIL 8 -->
+        <div class="info-content" id="teil8">
+            <h3>📕 8. Übungen zur Selbstkontrolle</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">📖 Übung 1: Ein Brief</h4>
+            <div class="code-box">
+                <div class="code-title">Text: Ein Brief</div>
+                <p>Lieber Ahmed,</p>
+                <p>vielen Dank für deinen Brief. Ich freue mich, von dir zu hören. Ich heiße Lena und bin sechzehn Jahre alt. Ich wohne in Berlin bei meinen Eltern und meinem kleinen Bruder. Ich gehe auf ein Gymnasium und lerne seit drei Jahren Deutsch.</p>
+                <p>Meine Schule ist groß und hat einen schönen Garten. Ich habe viele Freunde dort. Am liebsten mag ich den Sportunterricht, weil wir oft Fußball spielen. Nach der Schule treffe ich meine Freunde oder ich lese Bücher.</p>
+                <p>Was machst du nach der Schule? Schreib mir bald!</p>
+                <p>Deine Lena</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>1. Wie heißt die Schreiberin?</h4>
+                <p>_____________________________________________</p>
+            </div>
+            <div class="exercise">
+                <h4>2. Wo wohnt sie?</h4>
+                <p>_____________________________________________</p>
+            </div>
+            <div class="exercise">
+                <h4>3. Was ist ihr Lieblingsfach und warum?</h4>
+                <p>_____________________________________________</p>
+            </div>
+            <div class="exercise">
+                <h4>4. Richtig oder Falsch?</h4>
+                <p>a) Lena ist 15 Jahre alt. → _________</p>
+                <p>b) Sie hat einen kleinen Bruder. → _________</p>
+                <p>c) Sie lernt seit einem Jahr Deutsch. → _________</p>
+                <p>d) Ihre Schule hat einen Garten. → _________</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>✅ Musterantworten</h4>
+                <p>1. Die Schreiberin heißt Lena.</p>
+                <p>2. Sie wohnt in Berlin bei ihren Eltern.</p>
+                <p>3. Ihr Lieblingsfach ist Sport, weil sie oft Fußball spielen.</p>
+                <p>4a) Falsch — b) Richtig — c) Falsch (seit drei Jahren) — d) Richtig</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:24px;">📖 Übung 2: Gesund leben</h4>
+            <div class="code-box">
+                <div class="code-title">Text: Gesund leben</div>
+                <p>Wie kann man gesund leben? Das ist eine wichtige Frage für junge Menschen. Erstens sollte man jeden Tag Obst und Gemüse essen. Zweitens ist Sport sehr wichtig. Man sollte mindestens drei Mal pro Woche Sport treiben. Drittens muss man genug schlafen — mindestens acht Stunden pro Nacht. Schließlich ist es auch wichtig, viel Wasser zu trinken und nicht zu viel Zeit vor dem Bildschirm zu verbringen.</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>1. Was ist das Thema des Textes?</h4>
+                <p>_____________________________________________</p>
+            </div>
+            <div class="exercise">
+                <h4>2. Wie oft sollte man Sport treiben?</h4>
+                <p>_____________________________________________</p>
+            </div>
+            <div class="exercise">
+                <h4>3. Richtig oder Falsch?</h4>
+                <p>a) Man sollte jeden Tag Schokolade essen. → _________</p>
+                <p>b) Sport ist wichtig. → _________</p>
+                <p>c) Man sollte wenig Wasser trinken. → _________</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>✅ Musterantworten</h4>
+                <p>1. Das Thema des Textes ist, wie man gesund leben kann.</p>
+                <p>2. Man sollte mindestens drei Mal pro Woche Sport treiben.</p>
+                <p>3a) Falsch — b) Richtig — c) Falsch (Man soll viel Wasser trinken.)</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2027 From Bac-2-Fac - Tous droits réservés<br>📧 ahmedaminebadrii@gmail.com | 📞 25080244</p>
+    </footer>
+
+    <script src="../../Shared/script.js"></script>
+</body>
+</html>

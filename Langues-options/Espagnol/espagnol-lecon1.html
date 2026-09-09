@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 1: Bases del Español</title>
+    <link rel="stylesheet" href="../../Shared/style.css">
+    <style>
+        .info-content { background: var(--bg-white); border-radius: var(--radius-xl); padding: 28px; margin-bottom: 28px; box-shadow: var(--shadow-md); border: 1px solid var(--border-light); }
+        .info-content h3 { color: var(--primary); font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .info-content p { margin-bottom: 12px; line-height: 1.8; color: var(--text-dark); }
+        .code-box { background: #1E1E1E; border-radius: var(--radius-lg); padding: 18px 22px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 0.95rem; color: #D4D4D4; overflow-x: auto; }
+        .code-box .code-title { font-size: 0.85rem; color: #888; margin-bottom: 8px; font-family: 'Segoe UI', sans-serif; }
+        .example-box { background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border-left: 4px solid var(--success); padding: 18px 22px; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: 16px 0; }
+        .example-box h4 { color: #166534; font-size: 0.95rem; margin-bottom: 8px; }
+        .example-box p { margin-bottom: 6px; color: #14532d; }
+        .warning-box { background: linear-gradient(135deg, #FEF9C3, #FEF08A); border-left: 4px solid var(--warning); padding: 18px 22px; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: 16px 0; }
+        .warning-box h4 { color: #B45309; font-size: 0.95rem; margin-bottom: 8px; }
+        .key-points { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin: 16px 0; }
+        .key-point { background: var(--bg-gray-50); padding: 14px; border-radius: var(--radius-lg); border: 1px solid var(--border-light); display: flex; gap: 12px; align-items: flex-start; }
+        .key-point .icon { font-size: 1.3rem; flex-shrink: 0; }
+        .key-point p { font-size: 0.88rem; margin: 0; line-height: 1.5; }
+        .toc { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border-radius: var(--radius-xl); padding: 24px; margin-bottom: 28px; border: 1px solid #BFDBFE; }
+        .toc h3 { color: #1D4ED8; margin-bottom: 14px; font-size: 1.05rem; }
+        .toc ol { padding-left: 22px; }
+        .toc li { margin-bottom: 8px; color: var(--text-dark); font-size: 0.92rem; }
+        .toc li a { color: var(--primary); font-weight: 500; }
+        .toc li a:hover { text-decoration: underline; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+        .comparison-table th { background: var(--primary); color: white; padding: 12px; text-align: left; }
+        .comparison-table td { padding: 10px; border: 1px solid var(--border-light); }
+        .comparison-table tr:nth-child(even) { background: var(--bg-gray-50); }
+        .subsection { background: #f7fafc; border-radius: 12px; padding: 18px; margin: 16px 0; border-left: 4px solid var(--primary); }
+        .subsection h4 { color: var(--primary); font-size: 1rem; margin-bottom: 10px; }
+        .subsection p { font-size: 0.9rem; line-height: 1.7; }
+        .highlight { background: #fef3c7; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+        ul { padding-left: 22px; margin: 10px 0; }
+        ul li { margin-bottom: 6px; font-size: 0.9rem; line-height: 1.6; }
+        .flex-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+        .mini-card { background: var(--bg-gray-50); padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); }
+        .mini-card strong { color: var(--primary); font-size: 0.85rem; display: block; margin-bottom: 4px; }
+        .mini-card p { font-size: 0.82rem; margin: 0; color: #555; }
+        .exercise { background: #fff5f5; border: 2px dashed #fc8181; border-radius: 12px; padding: 18px; margin: 16px 0; }
+        .exercise h4 { color: #c53030; font-size: 0.95rem; margin-bottom: 8px; }
+        .exercise p { color: #742a2a; font-size: 0.88rem; margin-bottom: 5px; }
+        .info-inline { background: #e6f3ff; border-left: 4px solid #3182ce; padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 12px 0; }
+        .info-inline p { color: #1e4e79; font-size: 0.88rem; margin: 0; }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <a href="../../index.html" class="logo">
+                <img src="../../imgs/badri.png" alt="Logo" class="logo-image">
+                <span class="logo-text">From Bac-2-Fac</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../../index.html">Accueil</a>
+                <a href="../../Mathematiques/mathematiques.html">Math</a>
+                <a href="../../Physique/physique.html">Physique</a>
+                <a href="../../Sciences/sciences.html">Science</a>
+                <a href="../../Langues/Francais/francais.html">Français</a>
+                <a href="../../Langues/Anglais/anglais.html">Anglais</a>
+                <a href="../../Sciences-Humaines/Philosophie/philosophie.html">Philo</a>
+                <a href="../../Langues/Arabe/arabe.html">Arabe</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="container">
+        <a href="espagnol.html" class="back-btn">← Retour à l'Option Espagnol</a>
+
+        <!-- HEADER LEÇON -->
+        <div class="lesson-header">
+            <h1>Lección 1: Bases del Español</h1>
+            <p class="breadcrumb">Espagnol > Lección 1</p>
+        </div>
+
+        <!-- PLAN -->
+        <div class="toc">
+            <h3>📋 Índice</h3>
+            <ol>
+                <li><a href="#parte1">Los artículos y el género</a></li>
+                <li><a href="#parte2">Los pronombres personales</a></li>
+                <li><a href="#parte3">Los verbos: conjugación del presente</a></li>
+                <li><a href="#parte4">Los verbos irregulares</a></li>
+                <li><a href="#parte5">Los verbos reflexivos</a></li>
+                <li><a href="#parte6">Los posesivos y demostrativos</a></li>
+                <li><a href="#parte7">La negación: no</a></li>
+                <li><a href="#parte8">El orden de las palabras</a></li>
+                <li><a href="#parte9">Vocabulario para el Baccalauréat</a></li>
+                <li><a href="#parte10">Ejercicios</a></li>
+            </ol>
+        </div>
+
+        <!-- PARTE 1 -->
+        <div class="info-content" id="parte1">
+            <h3>📘 1. Los artículos y el género</h3>
+            
+            <p>En español hay dos géneros: <strong>masculino</strong> y <strong>femenino</strong>. El género se marca con el artículo <strong>el/los</strong> (masculino) y <strong>la/las</strong> (femenino).</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Género</th>
+                        <th>Definido</th>
+                        <th>Indefinido</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Masculino Singular</strong></td>
+                        <td>el</td>
+                        <td>un</td>
+                        <td>el libro, un libro</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Masculino Plural</strong></td>
+                        <td>los</td>
+                        <td>unos</td>
+                        <td>los libros, unos libros</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Femenino Singular</strong></td>
+                        <td>la</td>
+                        <td>una</td>
+                        <td>la mesa, una mesa</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Femenino Plural</strong></td>
+                        <td>las</td>
+                        <td>unas</td>
+                        <td>las mesas, unas mesas</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="subsection">
+                <h4>📌 ¿Cómo saber el género?</h4>
+                
+                <p><strong>• Masculino:</strong> Generalmente terminan en <strong>-o</strong></p>
+                <p>el libro, el alumno, el chico, el hermano</p>
+                
+                <p><strong>• Femenino:</strong> Generalmente terminan en <strong>-a</strong></p>
+                <p>la mesa, la alumna, la chica, la hermana</p>
+                
+                <p><strong>• Excepciones importantes:</strong></p>
+                <p>el día, el problema, el tema, el mapa (terminan en -a pero son masculinos)</p>
+                <p>la mano, la foto, la moto (terminan en -o pero son femeninos)</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>💡 Ejemplos</h4>
+                <p><strong>Masculino:</strong> el estudiante, un cuaderno, los profesores</p>
+                <p><strong>Femenino:</strong> la estudiante, una carpeta, las profesoras</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Importante para el Baccalauréat</h4>
+                <p>• Siempre marque el <strong>género correcto</strong> — ¡es esencial!</p>
+                <p>• Recuerde: <strong>un + sustantivo masculino</strong>, <strong>una + sustantivo femenino</strong></p>
+                <p>• <strong>El / La</strong> se contrae con <strong>a</strong> y <strong>de</strong>: a + el = <strong>al</strong>, de + el = <strong>del</strong></p>
+            </div>
+        </div>
+
+        <!-- PARTE 2 -->
+        <div class="info-content" id="parte2">
+            <h3>📗 2. Los pronombres personales</h3>
+            
+            <p>Los pronombres personales sustituyen a los sustantivos. En español, la forma del pronombre depende de su función en la oración.</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Persona</th>
+                        <th>Sujeto</th>
+                        <th>Complemento (CD/CI)</th>
+                        <th>Francés</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1ª Sing.</td>
+                        <td>yo</td>
+                        <td>me</td>
+                        <td>je / me</td>
+                    </tr>
+                    <tr>
+                        <td>2ª Sing.</td>
+                        <td>tú</td>
+                        <td>te</td>
+                        <td>tu / te</td>
+                    </tr>
+                    <tr>
+                        <td>3ª Sing. (m)</td>
+                        <td>él</td>
+                        <td>lo / le</td>
+                        <td>il / le / lui</td>
+                    </tr>
+                    <tr>
+                        <td>3ª Sing. (f)</td>
+                        <td>ella</td>
+                        <td>la / le</td>
+                        <td>elle / la / lui</td>
+                    </tr>
+                    <tr>
+                        <td>1ª Plur.</td>
+                        <td>nosotros/-as</td>
+                        <td>nos</td>
+                        <td>nous / nous</td>
+                    </tr>
+                    <tr>
+                        <td>2ª Plur.</td>
+                        <td>vosotros/-as</td>
+                        <td>os</td>
+                        <td>vous / vous</td>
+                    </tr>
+                    <tr>
+                        <td>3ª Plur. (m/f)</td>
+                        <td>ellos / ellas</td>
+                        <td>los / las / les</td>
+                        <td>ils/elles / les / leur</td>
+                    </tr>
+                    <tr>
+                        <td>Formal</td>
+                        <td>usted / ustedes</td>
+                        <td>lo/los/la/las/le</td>
+                        <td>vous (formel)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Ejemplos</h4>
+                <p>• Yo <strong>leo</strong> un libro. → Me <strong>gusta</strong>.</p>
+                <p>• Tú <strong>estudias</strong> mucho. → Te <strong>ayudo</strong>.</p>
+                <p>• Él <strong>habla</strong> español. → Yo lo <strong>veo</strong>.</p>
+                <p>• Nosotros <strong>vivimos</strong> en Túnez.</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Atención</h4>
+                <p>• <strong>Él / Ella</strong> = él / ella (pronombres de sujeto, siempre van antes del verbo)</p>
+                <p>• <strong>Usted (Ud.)</strong> = vous (forma formal, se usa en Túnez y América Latina)</p>
+                <p>• En Túnez usamos <strong>tú</strong> para informal y <strong>usted</strong> para formal</p>
+            </div>
+        </div>
+
+        <!-- PARTE 3 -->
+        <div class="info-content" id="parte3">
+            <h3>📙 3. Los verbos: conjugación del presente</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🔑 Verbos regulares en -AR</h4>
+            <p>Los verbos en <strong>-ar</strong> toman las terminaciones: <strong>-o, -as, -a, -amos, -áis, -an</strong></p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Persona</th>
+                        <th>hablar</th>
+                        <th>estudiar</th>
+                        <th>trabajar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>yo</td>
+                        <td>habl<strong>o</strong></td>
+                        <td>estudi<strong>o</strong></td>
+                        <td>trabaj<strong>o</strong></td>
+                    </tr>
+                    <tr>
+                        <td>tú</td>
+                        <td>habl<strong>as</strong></td>
+                        <td>estudi<strong>as</strong></td>
+                        <td>trabaj<strong>as</strong></td>
+                    </tr>
+                    <tr>
+                        <td>él/ella/Ud.</td>
+                        <td>habl<strong>a</strong></td>
+                        <td>estudi<strong>a</strong></td>
+                        <td>trabaj<strong>a</strong></td>
+                    </tr>
+                    <tr>
+                        <td>nosotros</td>
+                        <td>habl<strong>amos</strong></td>
+                        <td>estudi<strong>amos</strong></td>
+                        <td>trabaj<strong>amos</strong></td>
+                    </tr>
+                    <tr>
+                        <td>vosotros</td>
+                        <td>habl<strong>áis</strong></td>
+                        <td>estudi<strong>áis</strong></td>
+                        <td>trabaj<strong>áis</strong></td>
+                    </tr>
+                    <tr>
+                        <td>ellos/Uds.</td>
+                        <td>habl<strong>an</strong></td>
+                        <td>estudi<strong>an</strong></td>
+                        <td>trabaj<strong>an</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔑 Verbos regulares en -ER / -IR</h4>
+            <p>Los verbos en <strong>-er</strong> e <strong>-ir</strong> comparten las mismas terminaciones: <strong>-o, -es, -e, -emos, -éis, -en</strong></p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Persona</th>
+                        <th>comer (-ER)</th>
+                        <th>beber (-ER)</th>
+                        <th>vivir (-IR)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>yo</td>
+                        <td>com<strong>o</strong></td>
+                        <td>beb<strong>o</strong></td>
+                        <td>viv<strong>o</strong></td>
+                    </tr>
+                    <tr>
+                        <td>tú</td>
+                        <td>com<strong>es</strong></td>
+                        <td>beb<strong>es</strong></td>
+                        <td>viv<strong>es</strong></td>
+                    </tr>
+                    <tr>
+                        <td>él/ella/Ud.</td>
+                        <td>com<strong>e</strong></td>
+                        <td>beb<strong>e</strong></td>
+                        <td>viv<strong>e</strong></td>
+                    </tr>
+                    <tr>
+                        <td>nosotros</td>
+                        <td>com<strong>emos</strong></td>
+                        <td>beb<strong>emos</strong></td>
+                        <td>viv<strong>imos</strong></td>
+                    </tr>
+                    <tr>
+                        <td>vosotros</td>
+                        <td>com<strong>éis</strong></td>
+                        <td>beb<strong>éis</strong></td>
+                        <td>viv<strong>ís</strong></td>
+                    </tr>
+                    <tr>
+                        <td>ellos/Uds.</td>
+                        <td>com<strong>en</strong></td>
+                        <td>beb<strong>en</strong></td>
+                        <td>viv<strong>en</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Ejemplos en contexto</h4>
+                <p>• Yo <strong>hablo</strong> español. (hablar)</p>
+                <p>• Tú <strong>comes</strong> en la cafetería. (comer)</p>
+                <p>• Nosotros <strong>vivimos</strong> en Túnez. (vivir)</p>
+                <p>• Ellas <strong>estudian</strong> mucho. (estudiar)</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ ¡Cuidado!</h4>
+                <p>• <strong>Estar</strong> ≠ <strong>Ser</strong> — dos verbos diferentes para "être"</p>
+                <p>• <strong>Tener</strong> → yo tengo (irregular)</p>
+                <p>• La <strong>ñ</strong> es obligatoria en español: español, España, ñoño</p>
+            </div>
+        </div>
+
+        <!-- PARTE 4 -->
+        <div class="info-content" id="parte4">
+            <h3>📕 4. Los verbos irregulares</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🔑 Los verbos SER y ESTAR</h4>
+            <p>En español hay <strong>dos verbos</strong> para "être": <strong>SER</strong> y <strong>ESTAR</strong>. Es una distinción fundamental.</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Persona</th><th>SER</th><th>ESTAR</th><th>Uso</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>yo</td><td>soy</td><td>estoy</td><td rowspan="6"><strong>SER:</strong> identidad, origen, profesión, carácter<br><strong>ESTAR:</strong> estado, ubicación, feelings</td></tr>
+                    <tr><td>tú</td><td>eres</td><td>estás</td></tr>
+                    <tr><td>él/ella/Ud.</td><td>es</td><td>está</td></tr>
+                    <tr><td>nosotros</td><td>somos</td><td>estamos</td></tr>
+                    <tr><td>vosotros</td><td>sois</td><td>estáis</td></tr>
+                    <tr><td>ellos/Uds.</td><td>son</td><td>están</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Ejemplos: SER vs ESTAR</h4>
+                <p><strong>SER:</strong></p>
+                <p>• Yo <strong>soy</strong> estudiante. (identidad)</p>
+                <p>• Él <strong>es</strong> de Túnez. (origen)</p>
+                <p>• Ella <strong>es</strong> simpática. (carácter)</p>
+                <p>• Son las tres. (hora)</p>
+                
+                <p><strong>ESTAR:</strong></p>
+                <p>• Nosotros <strong>estamos</strong> en la escuela. (ubicación)</p>
+                <p>• Ella <strong>está</strong> cansada. (estado)</p>
+                <p>• Yo <strong>estoy</strong> feliz. (sentimiento)</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔑 Los verbos IR y TENER</h4>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Persona</th><th>IR (aller)</th><th>TENER (avoir)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>yo</td><td><strong>voy</strong></td><td><strong>tengo</strong></td></tr>
+                    <tr><td>tú</td><td><strong>vas</strong></td><td><strong>tienes</strong></td></tr>
+                    <tr><td>él/ella/Ud.</td><td><strong>va</strong></td><td><strong>tiene</strong></td></tr>
+                    <tr><td>nosotros</td><td><strong>vamos</strong></td><td><strong>tenemos</strong></td></tr>
+                    <tr><td>vosotros</td><td><strong>vais</strong></td><td><strong>tenéis</strong></td></tr>
+                    <tr><td>ellos/Uds.</td><td><strong>van</strong></td><td><strong>tienen</strong></td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Ejemplos</h4>
+                <p><strong>IR:</strong></p>
+                <p>• Yo <strong>voy</strong> a la escuela. (Je vais à l'école)</p>
+                <p>• Nosotros <strong>vamos</strong> al电影院. (Nous allons au cinéma)</p>
+                <p><strong>TENER:</strong></p>
+                <p>• Yo <strong>tengo</strong> dieciocho años. (J'ai 18 ans)</p>
+                <p>• Ella <strong>tiene</strong> hambre. (Elle a faim)</p>
+            </div>
+            
+            <div class="key-points">
+                <div class="key-point">
+                    <span class="icon">💪</span>
+                    <p><strong>TENER que + infinitivo</strong> = devoir<br><em>Tenemos que estudiar.</em></p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">❤️</span>
+                    <p><strong>TENER + sustantivo</strong> = avoir + nom<br><em>Tengo frío / calor / hambre / sed / miedo.</em></p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">➡️</span>
+                    <p><strong>IR a + lugar</strong> = aller à + lieu<br><em>Voy a Túnez.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTE 5 -->
+        <div class="info-content" id="parte5">
+            <h3>📗 5. Los verbos reflexivos</h3>
+            
+            <p>Los verbos <strong>reflexivos</strong> indican que la acción vuelve al sujeto. Se usan con un <strong>pronombre reflexivo</strong>: me, te, se, nos, os, se.</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Persona</th><th>Despertarse</th><th>Levantarse</th><th>Acostarse</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>yo</td><td>me despierto</td><td>me levanto</td><td>me acuesto</td></tr>
+                    <tr><td>tú</td><td>te despiertas</td><td>te levantas</td><td>te acuestas</td></tr>
+                    <tr><td>él/ella/Ud.</td><td>se despierta</td><td>se levanta</td><td>se acuesta</td></tr>
+                    <tr><td>nosotros</td><td>nos despertamos</td><td>nos levantamos</td><td>nos acostamos</td></tr>
+                    <tr><td>vosotros</td><td>os despertáis</td><td>os levantáis</td><td>os acostáis</td></tr>
+                    <tr><td>ellos/Uds.</td><td>se despiertan</td><td>se levantan</td><td>se acuestan</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Ejemplos en contexto</h4>
+                <p>• Yo <strong>me despierto</strong> a las seis. (Je me réveille)</p>
+                <p>• Tú <strong>te lavas</strong> las manos. (Tu te laves les mains)</p>
+                <p>• Nosotros <strong>nos vestimos</strong> rápido. (Nous nous habillons)</p>
+                <p>• Ella <strong>se peina</strong> cada mañana. (Elle se coiffe)</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ El pronombre reflexivo se coloca...</h4>
+                <p>• <strong>Antes del verbo:</strong> Yo <strong>me</strong> lavo. / Yo <strong>no me</strong> lavo.</p>
+                <p>• <strong>Después del infinitivo:</strong> Quiero <strong>lavarme</strong>.</p>
+                <p>• <strong>Después del gerundio:</strong> Estoy <strong>lavándome</strong>.</p>
+            </div>
+        </div>
+
+        <!-- PARTE 6 -->
+        <div class="info-content" id="parte6">
+            <h3>📙 6. Los posesivos y demostrativos</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🔹 Los posesivos</h4>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Posesivo</th><th>Ejemplo</th><th>Francés</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>mi / mis</td><td><strong>mi</strong> libro</td><td>mon livre</td></tr>
+                    <tr><td>tu / tus</td><td><strong>tu</strong> mochila</td><td>ton sac</td></tr>
+                    <tr><td>su / sus</td><td><strong>su</strong> profesora</td><td>son/sa professeur</td></tr>
+                    <tr><td>nuestro/-a</td><td><strong>nuestro</strong> colegio</td><td>notre école</td></tr>
+                    <tr><td>su / sus</td><td><strong>sus</strong> compañeros</td><td>leurs camarades</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Ejemplos</h4>
+                <p>• Este es <strong>mi</strong> cuaderno. — Este es <strong>tu</strong> bolígrafo.</p>
+                <p>• <strong>Nuestro</strong> profesor es simpático. — <strong>Sus</strong> amigos son simpáticos.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Los demostrativos</h4>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Demostrativo</th><th>Singular</th><th>Plural</th><th>Uso</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Este</td><td>este / esta</td><td>estos / estas</td><td>cerca</td></tr>
+                    <tr><td>Ese</td><td>ese / esa</td><td>esos / esas</td><td>lejos</td></tr>
+                    <tr><td>Aquel</td><td>aquél / aquélla</td><td>aquellos / aquéllas</td><td>muy lejos</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Ejemplos</h4>
+                <p>• <strong>Este</strong> libro es mío. (cerca de mí)</p>
+                <p>• <strong>Ese</strong> libro es tuyo. (cerca de ti)</p>
+                <p>• <strong>Aquel</strong> libro es de Ahmed. (lejos de ambos)</p>
+            </div>
+        </div>
+
+        <!-- PARTE 7 -->
+        <div class="info-content" id="parte7">
+            <h3>📕 7. La negación: "no"</h3>
+            
+            <p>En español, la negación se forma con <strong>no</strong> delante del verbo.</p>
+            
+            <div class="example-box">
+                <h4>💡 Ejemplos: afirmativo → negativo</h4>
+                <p>• Yo <strong>hablo</strong> español. → Yo <strong>no hablo</strong> español.</p>
+                <p>• Tú <strong>tienes</strong> hambre. → Tú <strong>no tienes</strong> hambre.</p>
+                <p>• Él <strong>está</strong> cansado. → Él <strong>no está</strong> cansado.</p>
+                <p>• Nosotros <strong>vivimos</strong> aquí. → Nosotros <strong>no vivimos</strong> aquí.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:16px;">🔹 Otras palabras de negación</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>nadie</strong><p>Personne</p></div>
+                <div class="mini-card"><strong>nada</strong><p>Rien</p></div>
+                <div class="mini-card"><strong>ninguno/-a</strong><p>Aucun(e)</p></div>
+                <div class="mini-card"><strong>nunca / jamás</strong><p>Jamais</p></div>
+                <div class="mini-card"><strong>ni... ni</strong><p>Ni... ni</p></div>
+                <div class="mini-card"><strong>tampoco</strong><p>Non plus / Non davantage</p></div>
+            </div>
+            
+            <div class="example-box">
+                <h4>💡 Ejemplos</h4>
+                <p>• <strong>Nadie</strong> viene. (Personne ne vient)</p>
+                <p>• Yo <strong>nunca</strong> como carne. (Je ne mange jamais de viande)</p>
+                <p>• Ella <strong>tampoco</strong> sabe. (Elle non plus ne sait pas)</p>
+                <p>• No tengo <strong>nada</strong>. (Je n'ai rien)</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ No... nada / no... nadie</h4>
+                <p>En español, la doble negación es correcta:</p>
+                <p>• <strong>No</strong> viene <strong>nadie</strong>. (Nadie viene.)</p>
+                <p>• <strong>No</strong> tengo <strong>nada</strong>. (Je n'ai rien.)</p>
+            </div>
+        </div>
+
+        <!-- PARTE 8 -->
+        <div class="info-content" id="parte8">
+            <h3>📘 8. El orden de las palabras</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🔹 Estructura básica del enunciado</h4>
+            <p>En español, la estructura más común es: <strong>Sujeto + Verbo + Complemento</strong> (SVO)</p>
+            
+            <div class="example-box">
+                <h4>💡 Ejemplos</h4>
+                <p>• Yo <strong>leo</strong> un libro.</p>
+                <p>• Tú <strong>comes</strong> en la cafetería.</p>
+                <p>• Ella <strong>habla</strong> español con sus amigos.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:16px;">🔹 La interrogación</h4>
+            
+            <p><strong>• ¿Qué?</strong> = ¿Quoi? / Que?</p>
+            <p style="margin-left:20px;"><em>¿Qué lees?</em></p>
+            
+            <p style="margin-top:8px;"><strong>• ¿Quién(es)?</strong> = Qui?</p>
+            <p style="margin-left:20px;"><em>¿Quién viene?</em></p>
+            
+            <p style="margin-top:8px;"><strong>• ¿Dónde?</strong> = Où?</p>
+            <p style="margin-left:20px;"><em>¿Dónde vives?</em></p>
+            
+            <p style="margin-top:8px;"><strong>• ¿Cuándo?</strong> = Quand?</p>
+            <p style="margin-left:20px;"><em>¿Cuándo sales?</em></p>
+            
+            <p style="margin-top:8px;"><strong>• ¿Por qué?</strong> = Pourquoi?</p>
+            <p style="margin-left:20px;"><em>¿Por qué estudias?</em></p>
+            
+            <p style="margin-top:8px;"><strong>• ¿Cómo?</strong> = Comment?</p>
+            <p style="margin-left:20px;"><em>¿Cómo estás?</em></p>
+            
+            <div class="info-inline">
+                <p><strong>🎯 Regla:</strong> En español, las preguntas de sí/no mantienen el mismo orden que la oración declarativa:</p>
+                <p>• Tú <strong>estudias</strong>. → ¿<strong>Estudias</strong> tú?</p>
+                <p>• Ella <strong>viene</strong>. → ¿<strong>Viene</strong> ella?</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:16px;">🔹 Ortografía importante</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>¿ / ?</strong><p>El interrogativo va al inicio Y al final</p></div>
+                <div class="mini-card"><strong>¡ / !</strong><p>El exclamativo va al inicio Y al final</p></div>
+                <div class="mini-card"><strong>ñ</strong><p>La eñe es obligatoria en español</p></div>
+                <div class="mini-card"><strong>ll</strong><p>llave, llamar, ella</p></div>
+                <div class="mini-card"><strong>rr</strong><p>perro, erre, arriba</p></div>
+                <div class="mini-card"><strong>Vocal + h</strong><p>honesto, ahora, eh</p></div>
+            </div>
+        </div>
+
+        <!-- PARTE 9 -->
+        <div class="info-content" id="parte9">
+            <h3>📙 9. Vocabulario para el Baccalauréat</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🏫 Vocabulario escolar</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>la escuela</strong><p>l'école</p></div>
+                <div class="mini-card"><strong>el profesor / la profesora</strong><p>le professeur</p></div>
+                <div class="mini-card"><strong>el alumno / la alumna</strong><p>l'élève</p></div>
+                <div class="mini-card"><strong>el libro</strong><p>le livre</p></div>
+                <div class="mini-card"><strong>el cuaderno</strong><p>le cahier</p></div>
+                <div class="mini-card"><strong>el bolígrafo</strong><p>le stylo</p></div>
+                <div class="mini-card"><strong>la tarea</strong><p>le devoir</p></div>
+                <div class="mini-card"><strong>el examen</strong><p>l'examen</p></div>
+                <div class="mini-card"><strong>la nota</strong><p>la note</p></div>
+                <div class="mini-card"><strong>la clase</strong><p>la classe / la matière</p></div>
+                <div class="mini-card"><strong>el recreo</strong><p>la récréation</p></div>
+                <div class="mini-card"><strong>la输了</strong><p>le tableau</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">👨‍👩‍👧‍👦 Familia</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>el padre</strong><p>le père</p></div>
+                <div class="mini-card"><strong>la madre</strong><p>la mère</p></div>
+                <div class="mini-card"><strong>el hermano / la hermana</strong><p>le frère / la sœur</p></div>
+                <div class="mini-card"><strong>los padres</strong><p>les parents</p></div>
+                <div class="mini-card"><strong>el abuelo / la abuela</strong><p>le grand-père / la grand-mère</p></div>
+                <div class="mini-card"><strong>el tío / la tía</strong><p>le oncle / la tante</p></div>
+                <div class="mini-card"><strong>el primo / la prima</strong><p>le cousin / la cousine</p></div>
+                <div class="mini-card"><strong>la familia</strong><p>la famille</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🕐 Expresiones de tiempo</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>hoy</strong><p>aujourd'hui</p></div>
+                <div class="mini-card"><strong>mañana</strong><p>demain</p></div>
+                <div class="mini-card"><strong>ayer</strong><p>hier</p></div>
+                <div class="mini-card"><strong>siempre</strong><p>toujours</p></div>
+                <div class="mini-card"><strong>nunca / jamás</strong><p>jamais</p></div>
+                <div class="mini-card"><strong>a veces</strong><p>parfois</p></div>
+                <div class="mini-card"><strong>ahora</strong><p>maintenant</p></div>
+                <div class="mini-card"><strong>luego</strong><p>puis / ensuite</p></div>
+                <div class="mini-card"><strong>primero</strong><p>d'abord</p></div>
+                <div class="mini-card"><strong>después</strong><p>après</p></div>
+                <div class="mini-card"><strong>por la mañana</strong><p>le matin</p></div>
+                <div class="mini-card"><strong>por la noche</strong><p>le soir</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">📝 Verbos útiles</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>estudiar</strong><p>étudier</p></div>
+                <div class="mini-card"><strong>aprender</strong><p>apprendre</p></div>
+                <div class="mini-card"><strong>enseñar</strong><p>enseigner</p></div>
+                <div class="mini-card"><strong>explicar</strong><p>expliquer</p></div>
+                <div class="mini-card"><strong>responder</strong><p>répondre</p></div>
+                <div class="mini-card"><strong>entender</strong><p>comprendre</p></div>
+                <div class="mini-card"><strong>leer</strong><p>lire</p></div>
+                <div class="mini-card"><strong>escribir</strong><p>écrire</p></div>
+                <div class="mini-card"><strong>hablar</strong><p>parler</p></div>
+                <div class="mini-card"><strong>vivir</strong><p>vivre / habiter</p></div>
+                <div class="mini-card"><strong>trabajar</strong><p>travailler</p></div>
+                <div class="mini-card"><strong>venir</strong><p>venir</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">💬 Expresiones útiles</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>Me llamo...</strong><p>Je m'appelle...</p></div>
+                <div class="mini-card"><strong>Tengo ... años</strong><p>J'ai ... ans</p></div>
+                <div class="mini-card"><strong>Vivo en...</strong><p>J'habite à...</p></div>
+                <div class="mini-card"><strong>Voy al colegio</strong><p>Je vais à l'école</p></div>
+                <div class="mini-card"><strong>Mi materia preferida es...</strong><p>Ma matière préférée est...</p></div>
+                <div class="mini-card"><strong>Quiero ser...</strong><p>Je veux devenir...</p></div>
+                <div class="mini-card"><strong>Por la tarde</strong><p>L'après-midi</p></div>
+                <div class="mini-card"><strong>En mi tiempo libre</strong><p>Pendant mon temps libre</p></div>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Consejos para el examen</h4>
+                <p>• Preste atención a la <strong>ñ</strong> — ¡es esencial en español!</p>
+                <p>• Recuerde la diferencia entre <strong>SER</strong> y <strong>ESTAR</strong></p>
+                <p>• Los sustantivos en <strong>-o</strong> son masculinos, en <strong>-a</strong> son femeninos</p>
+                <p>• Use los <strong>signos de interrogación</strong> ¿ ? y exclamación ¡ ! al principio Y al final</p>
+            </div>
+        </div>
+
+        <!-- PARTE 10 -->
+        <div class="info-content" id="parte10">
+            <h3>📕 10. Ejercicios</h3>
+            
+            <div class="exercise">
+                <h4>✏️ Ejercicio 1: Elija el artículo correcto</h4>
+                <p>1. ___ alumno estudia español. (el / la)</p>
+                <p>2. ___ profesora es simpática. (el / la)</p>
+                <p>3. ___ libros están en la mesa. (el / los)</p>
+                <p>4. ___ agua está fría. (el / la)</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>✏️ Ejercicio 2: Conjugue los verbos en presente</h4>
+                <p>1. Yo <em>hablar</em> → Yo ___</p>
+                <p>2. Tú <em>comer</em> → Tú ___</p>
+                <p>3. Ella <em>vivir</em> → Ella ___</p>
+                <p>4. Nosotros <em>estudiar</em> → Nosotros ___</p>
+                <p>5. Ellos <em>ser</em> → Ellos ___</p>
+                <p>6. Yo <em>estar</em> → Yo ___</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>✏️ Ejercicio 3: SER o ESTAR</h4>
+                <p>1. Yo ___ estudiante. (identidad)</p>
+                <p>2. Nosotros ___ en la escuela. (ubicación)</p>
+                <p>3. Ella ___ cansada. (estado)</p>
+                <p>4. Él ___ de Túnez. (origen)</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>✏️ Ejercicio 4: Negación</h4>
+                <p>1. Yo hablo español. → Yo ___ hablo español.</p>
+                <p>2. Él viene. → Él ___ viene.</p>
+                <p>3. Nosotros tenemos hambre. → Nosotros ___ ___ hambre.</p>
+                <p>4. Ella siempre estudia. → Ella ___ ___ estudia.</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>✏️ Ejercicio 5: Verbos reflexivos</h4>
+                <p>1. Yo ___ despierto a las seis. (despertarse)</p>
+                <p>2. Tú ___ lavas las manos. (lavarse)</p>
+                <p>3. Nosotros ___ vestimos rápido. (vestirse)</p>
+                <p>4. Ellas ___ acuestan tarde. (acostarse)</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>✅ Soluciones</h4>
+                <p><strong>Ejercicio 1:</strong> 1. El — 2. La — 3. Los — 4. El</p>
+                <p><strong>Ejercicio 2:</strong> 1. hablo — 2. comes — 3. vive — 4. estudiamos — 5. son — 6. estoy</p>
+                <p><strong>Ejercicio 3:</strong> 1. soy — 2. estamos — 3. está — 4. es</p>
+                <p><strong>Ejercicio 4:</strong> 1. no — 2. no — 3. no / tenemos — 4. nunca</p>
+                <p><strong>Ejercicio 5:</strong> 1. me — 2. te — 3. nos — 4. se</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2027 From Bac-2-Fac - Tous droits réservés<br>📧 ahmedaminebadrii@gmail.com | 📞 25080244</p>
+    </footer>
+
+    <script src="../../Shared/script.js"></script>
+</body>
+</html>

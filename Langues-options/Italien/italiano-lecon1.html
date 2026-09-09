@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lezione 1: Basi dell'Italiano</title>
+    <link rel="stylesheet" href="../../Shared/style.css">
+    <style>
+        .info-content { background: var(--bg-white); border-radius: var(--radius-xl); padding: 28px; margin-bottom: 28px; box-shadow: var(--shadow-md); border: 1px solid var(--border-light); }
+        .info-content h3 { color: var(--primary); font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .info-content p { margin-bottom: 12px; line-height: 1.8; color: var(--text-dark); }
+        .code-box { background: #1E1E1E; border-radius: var(--radius-lg); padding: 18px 22px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 0.95rem; color: #D4D4D4; overflow-x: auto; }
+        .code-box .code-title { font-size: 0.85rem; color: #888; margin-bottom: 8px; font-family: 'Segoe UI', sans-serif; }
+        .example-box { background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border-left: 4px solid var(--success); padding: 18px 22px; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: 16px 0; }
+        .example-box h4 { color: #166534; font-size: 0.95rem; margin-bottom: 8px; }
+        .example-box p { margin-bottom: 6px; color: #14532d; }
+        .warning-box { background: linear-gradient(135deg, #FEF9C3, #FEF08A); border-left: 4px solid var(--warning); padding: 18px 22px; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: 16px 0; }
+        .warning-box h4 { color: #B45309; font-size: 0.95rem; margin-bottom: 8px; }
+        .key-points { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin: 16px 0; }
+        .key-point { background: var(--bg-gray-50); padding: 14px; border-radius: var(--radius-lg); border: 1px solid var(--border-light); display: flex; gap: 12px; align-items: flex-start; }
+        .key-point .icon { font-size: 1.3rem; flex-shrink: 0; }
+        .key-point p { font-size: 0.88rem; margin: 0; line-height: 1.5; }
+        .toc { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border-radius: var(--radius-xl); padding: 24px; margin-bottom: 28px; border: 1px solid #BFDBFE; }
+        .toc h3 { color: #1D4ED8; margin-bottom: 14px; font-size: 1.05rem; }
+        .toc ol { padding-left: 22px; }
+        .toc li { margin-bottom: 8px; color: var(--text-dark); font-size: 0.92rem; }
+        .toc li a { color: var(--primary); font-weight: 500; }
+        .toc li a:hover { text-decoration: underline; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+        .comparison-table th { background: var(--primary); color: white; padding: 12px; text-align: left; }
+        .comparison-table td { padding: 10px; border: 1px solid var(--border-light); }
+        .comparison-table tr:nth-child(even) { background: var(--bg-gray-50); }
+        .subsection { background: #f7fafc; border-radius: 12px; padding: 18px; margin: 16px 0; border-left: 4px solid var(--primary); }
+        .subsection h4 { color: var(--primary); font-size: 1rem; margin-bottom: 10px; }
+        .subsection p { font-size: 0.9rem; line-height: 1.7; }
+        .highlight { background: #fef3c7; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+        ul { padding-left: 22px; margin: 10px 0; }
+        ul li { margin-bottom: 6px; font-size: 0.9rem; line-height: 1.6; }
+        .flex-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+        .mini-card { background: var(--bg-gray-50); padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); }
+        .mini-card strong { color: var(--primary); font-size: 0.85rem; display: block; margin-bottom: 4px; }
+        .mini-card p { font-size: 0.82rem; margin: 0; color: #555; }
+        .exercise { background: #fff5f5; border: 2px dashed #fc8181; border-radius: 12px; padding: 18px; margin: 16px 0; }
+        .exercise h4 { color: #c53030; font-size: 0.95rem; margin-bottom: 8px; }
+        .exercise p { color: #742a2a; font-size: 0.88rem; margin-bottom: 5px; }
+        .info-inline { background: #e6f3ff; border-left: 4px solid #3182ce; padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 12px 0; }
+        .info-inline p { color: #1e4e79; font-size: 0.88rem; margin: 0; }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <a href="../../index.html" class="logo">
+                <img src="../../imgs/badri.png" alt="Logo" class="logo-image">
+                <span class="logo-text">From Bac-2-Fac</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../../index.html">Accueil</a>
+                <a href="../../Mathematiques/mathematiques.html">Math</a>
+                <a href="../../Physique/physique.html">Physique</a>
+                <a href="../../Sciences/sciences.html">Science</a>
+                <a href="../../Langues/Francais/francais.html">Français</a>
+                <a href="../../Langues/Anglais/anglais.html">Anglais</a>
+                <a href="../../Sciences-Humaines/Philosophie/philosophie.html">Philo</a>
+                <a href="../../Langues/Arabe/arabe.html">Arabe</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="container">
+        <a href="italiano.html" class="back-btn">← Torna all'Opzione Italiano</a>
+
+        <!-- HEADER LEÇON -->
+        <div class="lesson-header">
+            <h1>Lezione 1: Basi dell'Italiano</h1>
+            <p class="breadcrumb">Italiano > Lezione 1</p>
+        </div>
+
+        <!-- PLAN -->
+        <div class="toc">
+            <h3>📋 Indice</h3>
+            <ol>
+                <li><a href="#parte1">Gli articoli e il genere</a></li>
+                <li><a href="#parte2">I pronomi personali</a></li>
+                <li><a href="#parte3">I verbi: coniugazione del presente</a></li>
+                <li><a href="#parte4">I verbi irregolari</a></li>
+                <li><a href="#parte5">I verbi riflessivi</a></li>
+                <li><a href="#parte6">I possessivi e i dimostrativi</a></li>
+                <li><a href="#parte7">La negazione: non</a></li>
+                <li><a href="#parte8">L'ordine delle parole</a></li>
+                <li><a href="#parte9">Vocabolario per il Baccalauréat</a></li>
+                <li><a href="#parte10">Esercizi</a></li>
+            </ol>
+        </div>
+
+        <!-- PARTE 1 -->
+        <div class="info-content" id="parte1">
+            <h3>📘 1. Gli articoli e il genere</h3>
+            
+            <p>In italiano ci sono due generi: <strong>maschile</strong> e <strong>femminile</strong>. Il genere si vede con l'articolo <strong>il/i</strong> (maschile) e <strong>la/le</strong> (femminile).</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Genere</th>
+                        <th>Definito</th>
+                        <th>Indeterminato</th>
+                        <th>Esempio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Maschile Singolare</strong></td>
+                        <td>il</td>
+                        <td>un</td>
+                        <td>il libro, un libro</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Maschile Plurale</strong></td>
+                        <td>i</td>
+                        <td>dei</td>
+                        <td>i libri, dei libri</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Femminile Singolare</strong></td>
+                        <td>la</td>
+                        <td>una</td>
+                        <td>la casa, una casa</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Femminile Plurale</strong></td>
+                        <td>le</td>
+                        <td>delle</td>
+                        <td>le case, delle case</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="subsection">
+                <h4>📌 Come capire il genere?</h4>
+                
+                <p><strong>• Maschile:</strong> Di solito finiscono in <strong>-o</strong></p>
+                <p>il libro, l'alunno, il ragazzo, il fratello</p>
+                
+                <p><strong>• Femminile:</strong> Di solito finiscono in <strong>-a</strong></p>
+                <p>la casa, l'alunna, la ragazza, la sorella</p>
+                
+                <p><strong>• Eccezioni importanti:</strong></p>
+                <p>la mano, la foto, la moto (finiscono in -o ma sono femminili)</p>
+                <p>il problema, il tema, il cinema (finiscono in -a ma sono maschili)</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>💡 Esempi</h4>
+                <p><strong>Maschile:</strong> lo studente, un quaderno, i professori</p>
+                <p><strong>Femminile:</strong> la studentessa, una cartella, le professoresse</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Importante per il Baccalauréat</h4>
+                <p>• Metti sempre il <strong>genere giusto</strong> — è importante!</p>
+                <p>• Ricorda: <strong>un + nome maschile</strong>, <strong>una + nome femminile</strong></p>
+                <p>• Davanti alle vocali si usa <strong>lo/la</strong> e <strong>uno/una</strong>: lo studente, una alunna</p>
+            </div>
+        </div>
+
+        <!-- PARTE 2 -->
+        <div class="info-content" id="parte2">
+            <h3>📗 2. I pronomi personali</h3>
+            
+            <p>I pronomi personali sostituiscono i nomi. In italiano, la forma del pronome dipende dal suo ruolo nella frase.</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Persona</th>
+                        <th>Soggetto</th>
+                        <th>Complemento (CD/CI)</th>
+                        <th>Francese</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1ª Sing.</td>
+                        <td>io</td>
+                        <td>mi</td>
+                        <td>je / me</td>
+                    </tr>
+                    <tr>
+                        <td>2ª Sing.</td>
+                        <td>tu</td>
+                        <td>ti</td>
+                        <td>tu / te</td>
+                    </tr>
+                    <tr>
+                        <td>3ª Sing. (m)</td>
+                        <td>lui</td>
+                        <td>lo / gli</td>
+                        <td>il / le / lui</td>
+                    </tr>
+                    <tr>
+                        <td>3ª Sing. (f)</td>
+                        <td>lei</td>
+                        <td>la / le</td>
+                        <td>elle / la / lui</td>
+                    </tr>
+                    <tr>
+                        <td>1ª Plur.</td>
+                        <td>noi</td>
+                        <td>ci</td>
+                        <td>nous / nous</td>
+                    </tr>
+                    <tr>
+                        <td>2ª Plur.</td>
+                        <td>voi</td>
+                        <td>vi</td>
+                        <td>vous / vous</td>
+                    </tr>
+                    <tr>
+                        <td>3ª Plur. (m/f)</td>
+                        <td>loro</td>
+                        <td>li / le</td>
+                        <td>ils/elles / les / leur</td>
+                    </tr>
+                    <tr>
+                        <td>Formale</td>
+                        <td>Lei / Loro</td>
+                        <td>la/li/le</td>
+                        <td>vous (formel)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Esempi</h4>
+                <p>• Io <strong>leggo</strong> un libro. → Mi <strong>piace</strong>.</p>
+                <p>• Tu <strong>studi</strong> molto. → Ti <strong>aiuto</strong>.</p>
+                <p>• Lui <strong>parla</strong> italiano. → Io lo <strong>vedo</strong>.</p>
+                <p>• Noi <strong>abitiamo</strong> a Tunisi.</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Attenzione</h4>
+                <p>• <strong>Lui / Lei</strong> = lui / lei (pronomi di soggetto, sempre prima del verbo)</p>
+                <p>• <strong>Lei (formale)</strong> = vous (forma cortese, si usa in Tunisia e Italia)</p>
+                <p>• In Tunisia usiamo <strong>tu</strong> per informale e <strong>Lei</strong> per formale</p>
+            </div>
+        </div>
+
+        <!-- PARTE 3 -->
+        <div class="info-content" id="parte3">
+            <h3>📙 3. I verbi: coniugazione del presente</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🔑 Verbi regolari in -ARE</h4>
+            <p>I verbi in <strong>-are</strong> prendono le terminazioni: <strong>-o, -i, -a, -iamo, -ate, -ano</strong></p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Persona</th>
+                        <th>parlare</th>
+                        <th>studiare</th>
+                        <th>lavorare</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>io</td>
+                        <td>parl<strong>o</strong></td>
+                        <td>stud<strong>i</strong>o</td>
+                        <td>lavor<strong>o</strong></td>
+                    </tr>
+                    <tr>
+                        <td>tu</td>
+                        <td>parl<strong>i</strong></td>
+                        <td>stud<strong>i</strong></td>
+                        <td>lavor<strong>i</strong></td>
+                    </tr>
+                    <tr>
+                        <td>lui/lei</td>
+                        <td>parl<strong>a</strong></td>
+                        <td>stud<strong>i</strong>a</td>
+                        <td>lavor<strong>a</strong></td>
+                    </tr>
+                    <tr>
+                        <td>noi</td>
+                        <td>parl<strong>iamo</strong></td>
+                        <td>stud<strong>i</strong>amo</td>
+                        <td>lavor<strong>iamo</strong></td>
+                    </tr>
+                    <tr>
+                        <td>voi</td>
+                        <td>parl<strong>ate</strong></td>
+                        <td>stud<strong>i</strong>ate</td>
+                        <td>lavor<strong>ate</strong></td>
+                    </tr>
+                    <tr>
+                        <td>loro</td>
+                        <td>parl<strong>ano</strong></td>
+                        <td>stud<strong>i</strong>ano</td>
+                        <td>lavor<strong>ano</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔑 Verbi regolari in -ERE / -IRE</h4>
+            <p>I verbi in <strong>-ere</strong> e <strong>-ire</strong> hanno terminazioni diverse:</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Persona</th>
+                        <th>prendere (-ERE)</th>
+                        <th>bere (-ERE)</th>
+                        <th>dormire (-IRE)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>io</td>
+                        <td>prend<strong>o</strong></td>
+                        <td>b<strong>evo</strong></td>
+                        <td>dorm<strong>o</strong></td>
+                    </tr>
+                    <tr>
+                        <td>tu</td>
+                        <td>prend<strong>i</strong></td>
+                        <td>b<strong>evi</strong></td>
+                        <td>dorm<strong>i</strong></td>
+                    </tr>
+                    <tr>
+                        <td>lui/lei</td>
+                        <td>prend<strong>e</strong></td>
+                        <td>b<strong>eve</strong></td>
+                        <td>dorm<strong>e</strong></td>
+                    </tr>
+                    <tr>
+                        <td>noi</td>
+                        <td>prend<strong>iamo</strong></td>
+                        <td>b<strong>eviamo</strong></td>
+                        <td>dorm<strong>iamo</strong></td>
+                    </tr>
+                    <tr>
+                        <td>voi</td>
+                        <td>prend<strong>ete</strong></td>
+                        <td>b<strong>evete</strong></td>
+                        <td>dorm<strong>ite</strong></td>
+                    </tr>
+                    <tr>
+                        <td>loro</td>
+                        <td>prend<strong>ono</strong></td>
+                        <td>b<strong>evono</strong></td>
+                        <td>dorm<strong>ono</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Esempi nel contesto</h4>
+                <p>• Io <strong>parlo</strong> italiano. (parlare)</p>
+                <p>• Tu <strong>mangi</strong> alla mensa. (mangiare)</p>
+                <p>• Noi <strong>abitiamo</strong> a Tunisi. (abitare)</p>
+                <p>• Loro <strong>studiano</strong> molto. (studiare)</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Attenzione!</h4>
+                <p>• <strong>Essere</strong> ≠ <strong>Avere</strong> — due verbi diversi per "être"</p>
+                <p>• <strong>Avere</strong> → io ho (irregolare)</p>
+                <p>• L'italiano ha <strong>parole con l'accento</strong>: università, perché, cos'è</p>
+            </div>
+        </div>
+
+        <!-- PARTE 4 -->
+        <div class="info-content" id="parte4">
+            <h3>📕 4. I verbi irregolari</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🔑 I verbi ESSERE e AVERE</h4>
+            <p>In italiano ci sono <strong>due verbi importanti</strong>: <strong>ESSERE</strong> e <strong>AVERE</strong>. Sono fondamentali.</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Persona</th><th>ESSERE</th><th>AVERE</th><th>Uso</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>io</td><td>sono</td><td>ho</td><td rowspan="6"><strong>ESSERE:</strong> identità, origine, professione, carattere<br><strong>AVERE:</strong> possesso, stato, età</td></tr>
+                    <tr><td>tu</td><td>sei</td><td>hai</td></tr>
+                    <tr><td>lui/lei</td><td>è</td><td>ha</td></tr>
+                    <tr><td>noi</td><td>siamo</td><td>abbiamo</td></tr>
+                    <tr><td>voi</td><td>siete</td><td>avete</td></tr>
+                    <tr><td>loro</td><td>sono</td><td>hanno</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Esempi: ESSERE vs AVERE</h4>
+                <p><strong>ESSERE:</strong></p>
+                <p>• Io <strong>sono</strong> studente. (identità)</p>
+                <p>• Lui <strong>è</strong> di Tunisi. (origine)</p>
+                <p>• Lei <strong>è</strong> simpatica. (carattere)</p>
+                <p>• Sono le tre. (ora)</p>
+                
+                <p><strong>AVERE:</strong></p>
+                <p>• Noi <strong>abbiamo</strong> una casa. (possesso)</p>
+                <p>• Lei <strong>ha</strong> fame. (stato)</p>
+                <p>• Io <strong>ho</strong> diciotto anni. (età)</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔑 I verbi ANDARE e FARE</h4>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Persona</th><th>ANDARE (aller)</th><th>FARE (faire)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>io</td><td><strong>vado</strong></td><td><strong>faccio</strong></td></tr>
+                    <tr><td>tu</td><td><strong>vai</strong></td><td><strong>fai</strong></td></tr>
+                    <tr><td>lui/lei</td><td><strong>va</strong></td><td><strong>fa</strong></td></tr>
+                    <tr><td>noi</td><td><strong>andiamo</strong></td><td><strong>facciamo</strong></td></tr>
+                    <tr><td>voi</td><td><strong>andate</strong></td><td><strong>fate</strong></td></tr>
+                    <tr><td>loro</td><td><strong>vano</strong></td><td><strong>fanno</strong></td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Esempi</h4>
+                <p><strong>ANDARE:</strong></p>
+                <p>• Io <strong>vado</strong> a scuola. (Je vais à l'école)</p>
+                <p>• Noi <strong>andiamo</strong> al cinema. (Nous allons au cinéma)</p>
+                <p><strong>FARE:</strong></p>
+                <p>• Io <strong>faccio</strong> i compiti. (Je fais mes devoirs)</p>
+                <p>• Lei <strong>fa</strong> sport. (Elle fait du sport)</p>
+            </div>
+            
+            <div class="key-points">
+                <div class="key-point">
+                    <span class="icon">💪</span>
+                    <p><strong>Dovere + infinito</strong> = devoir<br><em>Dobbiamo studiare.</em></p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">❤️</span>
+                    <p><strong>AVERE + nome</strong> = avoir + nom<br><em>Ho fame / caldo / sete / paura.</em></p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">➡️</span>
+                    <p><strong>ANDARE a + luogo</strong> = aller à + lieu<br><em>Vado a Tunisi.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTE 5 -->
+        <div class="info-content" id="parte5">
+            <h3>📗 5. I verbi riflessivi</h3>
+            
+            <p>I verbi <strong>riflessivi</strong> indicano che l'azione torna al soggetto. Si usano con un <strong>pronome riflessivo</strong>: mi, ti, si, ci, vi, si.</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Persona</th><th>Svegliarsi</th><th>Alzarsi</th><th>Addormentarsi</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>io</td><td>mi sveglio</td><td>mi alzo</td><td>mi addormento</td></tr>
+                    <tr><td>tu</td><td>ti svegli</td><td>ti alzi</td><td>ti addormenti</td></tr>
+                    <tr><td>lui/lei</td><td>si sveglia</td><td>si alza</td><td>si addormenta</td></tr>
+                    <tr><td>noi</td><td>ci svegliamo</td><td>ci alziamo</td><td>ci addormentiamo</td></tr>
+                    <tr><td>voi</td><td>vi svegliate</td><td>vi alzate</td><td>vi addormentate</td></tr>
+                    <tr><td>loro</td><td>si svegliano</td><td>si alzano</td><td>si addormentano</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Esempi nel contesto</h4>
+                <p>• Io <strong>mi sveglio</strong> alle sei. (Je me réveille)</p>
+                <p>• Tu <strong>ti lavi</strong> le mani. (Tu te laves les mains)</p>
+                <p>• Noi <strong>ci vestiamo</strong> in fretta. (Nous nous habillons)</p>
+                <p>• Lei <strong>si pettina</strong> ogni mattina. (Elle se coiffe)</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Il pronome riflessivo si mette...</h4>
+                <p>• <strong>Prima del verbo:</strong> Io <strong>mi</strong> lavo. / Io <strong>non mi</strong> lavo.</p>
+                <p>• <strong>Dopo l'infinito:</strong> Voglio <strong>lavarmi</strong>.</p>
+                <p>• <strong>Dopo il gerundio:</strong> Sto <strong>lavandomi</strong>.</p>
+            </div>
+        </div>
+
+        <!-- PARTE 6 -->
+        <div class="info-content" id="parte6">
+            <h3>📙 6. I possessivi e i dimostrativi</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🔹 I possessivi</h4>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Possessivo</th><th>Esempio</th><th>Francese</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>il mio / i miei</td><td><strong>il mio</strong> libro</td><td>mon livre</td></tr>
+                    <tr><td>il tuo / i tuoi</td><td><strong>il tuo</strong> zaino</td><td>ton sac</td></tr>
+                    <tr><td>il suo / i suoi</td><td><strong>la sua</strong> professoressa</td><td>son/sa professeur</td></tr>
+                    <tr><td>il nostro / i nostri</td><td><strong>il nostro</strong> liceo</td><td>notre école</td></tr>
+                    <tr><td>il loro / i loro</td><td><strong>i loro</strong> amici</td><td>leurs camarades</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Esempi</h4>
+                <p>• Questo è <strong>il mio</strong> quaderno. — Questo è <strong>il tuo</strong> pennarello.</p>
+                <p>• <strong>Il nostro</strong> professore è simpatico. — <strong>I suoi</strong> amici sono simpatici.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 I dimostrativi</h4>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Dimostrativo</th><th>Singolare</th><th>Plurale</th><th>Uso</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Questo</td><td>questo / questa</td><td>questi / queste</td><td>vicino</td></tr>
+                    <tr><td>Quello</td><td>quello / quella</td><td>quelli / quelle</td><td>lontano</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Esempi</h4>
+                <p>• <strong>Questo</strong> libro è mio. (vicino a me)</p>
+                <p>• <strong>Quello</strong> libro è tuo. (lontano da me)</p>
+                <p>• <strong>Quelle</strong> case sono grandi. (lontano da entrambi)</p>
+            </div>
+        </div>
+
+        <!-- PARTE 7 -->
+        <div class="info-content" id="parte7">
+            <h3>📕 7. La negazione: "non"</h3>
+            
+            <p>In italiano, la negazione si fa con <strong>non</strong> davanti al verbo.</p>
+            
+            <div class="example-box">
+                <h4>💡 Esempi: affermativo → negativo</h4>
+                <p>• Io <strong>parlo</strong> italiano. → Io <strong>non parlo</strong> italiano.</p>
+                <p>• Tu <strong>hai</strong> fame. → Tu <strong>non hai</strong> fame.</p>
+                <p>• Lui <strong>è</strong> stanco. → Lui <strong>non è</strong> stanco.</p>
+                <p>• Noi <strong>abitiamo</strong> qui. → Noi <strong>non abitiamo</strong> qui.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:16px;">🔹 Altre parole di negazione</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>nessuno</strong><p>Personne</p></div>
+                <div class="mini-card"><strong>niente / nulla</strong><p>Rien</p></div>
+                <div class="mini-card"><strong>nessuno/-a</strong><p>Aucun(e)</p></div>
+                <div class="mini-card"><strong>mai / giammai</strong><p>Jamais</p></div>
+                <div class="mini-card"><strong>né... né</strong><p>Ni... ni</p></div>
+                <div class="mini-card"><strong>nemmeno / neanche</strong><p>Non plus / Non davantage</p></div>
+            </div>
+            
+            <div class="example-box">
+                <h4>💡 Esempi</h4>
+                <p>• <strong>Nessuno</strong> viene. (Personne ne vient)</p>
+                <p>• Io <strong>mai</strong> mangio carne. (Je ne mange jamais de viande)</p>
+                <p>• Lei <strong>nemmeno</strong> sa. (Elle non plus ne sait pas)</p>
+                <p>• Non ho <strong>niente</strong>. (Je n'ai rien)</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Non + verbo + niente / non + verbo + nessuno</h4>
+                <p>In italiano, la doppia negazione è normale:</p>
+                <p>• <strong>Non</strong> viene <strong>nessuno</strong>. (Nessuno viene.)</p>
+                <p>• <strong>Non</strong> ho <strong>niente</strong>. (Je n'ai rien.)</p>
+            </div>
+        </div>
+
+        <!-- PARTE 8 -->
+        <div class="info-content" id="parte8">
+            <h3>📘 8. L'ordine delle parole</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🔹 Struttura base della frase</h4>
+            <p>In italiano, la struttura più comune è: <strong>Soggetto + Verbo + Complemento</strong> (SVO)</p>
+            
+            <div class="example-box">
+                <h4>💡 Esempi</h4>
+                <p>• Io <strong>leggo</strong> un libro.</p>
+                <p>• Tu <strong>mangi</strong> alla mensa.</p>
+                <p>• Lei <strong>parla</strong> italiano con i suoi amici.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:16px;">🔹 Le domande</h4>
+            
+            <p><strong>• ¿Che cosa?</strong> = Quoi? / Que?</p>
+            <p style="margin-left:20px;"><em>Cosa leggi?</em></p>
+            
+            <p style="margin-top:8px;"><strong>• ¿Chi?</strong> = Qui?</p>
+            <p style="margin-left:20px;"><em>Chi viene?</em></p>
+            
+            <p style="margin-top:8px;"><strong>• ¿Dove?</strong> = Où?</p>
+            <p style="margin-left:20px;"><em>Dove abiti?</em></p>
+            
+            <p style="margin-top:8px;"><strong>• ¿Quando?</strong> = Quand?</p>
+            <p style="margin-left:20px;"><em>Quando esci?</em></p>
+            
+            <p style="margin-top:8px;"><strong>• ¿Perché?</strong> = Pourquoi?</p>
+            <p style="margin-left:20px;"><em>Perché studi?</em></p>
+            
+            <p style="margin-top:8px;"><strong>• ¿Come?</strong> = Comment?</p>
+            <p style="margin-left:20px;"><em>Come stai?</em></p>
+            
+            <div class="info-inline">
+                <p><strong>🎯 Regola:</strong> In italiano, le domande di sì/no hanno lo stesso ordine della frase normale:</p>
+                <p>• Tu <strong>studi</strong>. → <strong>Studi</strong> tu?</p>
+                <p>• Lei <strong> viene</strong>. → <strong>Viene</strong> lei?</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:16px;">🔹 Ortografia importante</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>accento</strong><p>L'accento è importante: può cambiare il senso!</p></div>
+                <div class="mini-card"><strong>é / è</strong><p>Perché / poiché (con accento)</p></div>
+                <div class="mini-card"><strong>è / é</strong><p>È (congiunzione) vs é (mai in italiano!)</p></div>
+                <div class="mini-card"><strong>h</strong><p>ho, hai, ha (la h è muta)</p></div>
+            </div>
+        </div>
+
+        <!-- PARTE 9 -->
+        <div class="info-content" id="parte9">
+            <h3>📙 9. Vocabolario per il Baccalauréat</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🏫 Vocabolario scolastico</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>la scuola</strong><p>l'école</p></div>
+                <div class="mini-card"><strong>il professore / la professoressa</strong><p>le professeur</p></div>
+                <div class="mini-card"><strong>lo studente / la studentessa</strong><p>l'élève</p></div>
+                <div class="mini-card"><strong>il libro</strong><p>le livre</p></div>
+                <div class="mini-card"><strong>il quaderno</strong><p>le cahier</p></div>
+                <div class="mini-card"><strong>la penna</strong><p>le stylo</p></div>
+                <div class="mini-card"><strong>i compiti</strong><p>le devoir</p></div>
+                <div class="mini-card"><strong>l'esame</strong><p>l'examen</p></div>
+                <div class="mini-card"><strong>il voto</strong><p>la note</p></div>
+                <div class="mini-card"><strong>la materia</strong><p>la classe / la matière</p></div>
+                <div class="mini-card"><strong>la ricreazione</strong><p>la récréation</p></div>
+                <div class="mini-card"><strong>la lavagna</strong><p>le tableau</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">👨‍👩‍👧‍👦 Famiglia</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>il padre</strong><p>le père</p></div>
+                <div class="mini-card"><strong>la madre</strong><p>la mère</p></div>
+                <div class="mini-card"><strong>il fratello / la sorella</strong><p>le frère / la sœur</p></div>
+                <div class="mini-card"><strong>i genitori</strong><p>les parents</p></div>
+                <div class="mini-card"><strong>il nonno / la nonna</strong><p>le grand-père / la grand-mère</p></div>
+                <div class="mini-card"><strong>lo zio / la zia</strong><p>le oncle / la tante</p></div>
+                <div class="mini-card"><strong>il cugino / la cugina</strong><p>le cousin / la cousine</p></div>
+                <div class="mini-card"><strong>la famiglia</strong><p>la famille</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🕐 Espressioni di tempo</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>oggi</strong><p>aujourd'hui</p></div>
+                <div class="mini-card"><strong>domani</strong><p>demain</p></div>
+                <div class="mini-card"><strong>ieri</strong><p>hier</p></div>
+                <div class="mini-card"><strong>sempre</strong><p>toujours</p></div>
+                <div class="mini-card"><strong>mai</strong><p>jamais</p></div>
+                <div class="mini-card"><strong>a volte</strong><p>parfois</p></div>
+                <div class="mini-card"><strong>ora / adesso</strong><p>maintenant</p></div>
+                <div class="mini-card"><strong>poi</strong><p>puis / ensuite</p></div>
+                <div class="mini-card"><strong>prima</strong><p>d'abord</p></div>
+                <div class="mini-card"><strong>dopo</strong><p>après</p></div>
+                <div class="mini-card"><strong>di mattina</strong><p>le matin</p></div>
+                <div class="mini-card"><strong>di sera</strong><p>le soir</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">📝 Verbi utili</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>studiare</strong><p>étudier</p></div>
+                <div class="mini-card"><strong>imparare</strong><p>apprendre</p></div>
+                <div class="mini-card"><strong>insegnare</strong><p>enseigner</p></div>
+                <div class="mini-card"><strong>spiegare</strong><p>expliquer</p></div>
+                <div class="mini-card"><strong>rispondere</strong><p>répondre</p></div>
+                <div class="mini-card"><strong>capire</strong><p>comprendre</p></div>
+                <div class="mini-card"><strong>leggere</strong><p>lire</p></div>
+                <div class="mini-card"><strong>scrivere</strong><p>écrire</p></div>
+                <div class="mini-card"><strong>parlare</strong><p>parler</p></div>
+                <div class="mini-card"><strong>abitare</strong><p>vivre / habiter</p></div>
+                <div class="mini-card"><strong>lavorare</strong><p>travailler</p></div>
+                <div class="mini-card"><strong>venire</strong><p>venir</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">💬 Espressioni utili</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>Mi chiamo...</strong><p>Je m'appelle...</p></div>
+                <div class="mini-card"><strong>Ho ... anni</strong><p>J'ai ... ans</p></div>
+                <div class="mini-card"><strong>Abito a...</strong><p>J'habite à...</p></div>
+                <div class="mini-card"><strong>Vado a scuola</strong><p>Je vais à l'école</p></div>
+                <div class="mini-card"><strong>La mia materia preferita è...</strong><p>Ma matière préférée est...</p></div>
+                <div class="mini-card"><strong>Voglio diventare...</strong><p>Je veux devenir...</p></div>
+                <div class="mini-card"><strong>Di pomeriggio</strong><p>L'après-midi</p></div>
+                <div class="mini-card"><strong>Nel mio tempo libero</strong><p>Pendant mon temps libre</p></div>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Consigli per l'esame</h4>
+                <p>• Fai attenzione all'<strong>accento</strong> — è importante in italiano!</p>
+                <p>• Ricorda la differenza tra <strong>ESSERE</strong> e <strong>AVERE</strong></p>
+                <p>• I nomi in <strong>-o</strong> sono maschili, in <strong>-a</strong> sono femminili</p>
+                <p>• Usa l'<strong>accento</strong> dove serve: perché, cos'è, università</p>
+            </div>
+        </div>
+
+        <!-- PARTE 10 -->
+        <div class="info-content" id="parte10">
+            <h3>📕 10. Esercizi</h3>
+            
+            <div class="exercise">
+                <h4>✏️ Esercizio 1: Scegli l'articolo giusto</h4>
+                <p>1. ___ alunno studia italiano. (il / la)</p>
+                <p>2. ___ professoressa è simpatica. (il / la)</p>
+                <p>3. ___ libri sono sul tavolo. (il / i)</p>
+                <p>4. ___ acqua è fredda. (il / l')</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>✏️ Esercizio 2: Coniuga i verbi al presente</h4>
+                <p>1. Io <em>parlare</em> → Io ___</p>
+                <p>2. Tu <em>mangiare</em> → Tu ___</p>
+                <p>3. Lei <em>dormire</em> → Lei ___</p>
+                <p>4. Noi <em>studiare</em> → Noi ___</p>
+                <p>5. Loro <em>essere</em> → Loro ___</p>
+                <p>6. Io <em>avere</em> → Io ___</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>✏️ Esercizio 3: ESSERE o AVERE</h4>
+                <p>1. Io ___ studente. (identità)</p>
+                <p>2. Noi ___ a scuola. (luogo)</p>
+                <p>3. Lei ___ stanca. (stato)</p>
+                <p>4. Lui ___ di Tunisi. (origine)</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>✏️ Esercizio 4: Negazione</h4>
+                <p>1. Io parlo italiano. → Io ___ ___ parlo italiano.</p>
+                <p>2. Lui viene. → Lui ___ ___ viene.</p>
+                <p>3. Noi abbiamo fame. → Noi ___ ___ ___ fame.</p>
+                <p>4. Lei studia sempre. → Lei ___ ___ studia.</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>✏️ Esercizio 5: Verbi riflessivi</h4>
+                <p>1. Io ___ sveglio alle sei. (svegliarsi)</p>
+                <p>2. Tu ___ lavi le mani. (lavarsi)</p>
+                <p>3. Noi ___ vestiamo in fretta. (vestirsi)</p>
+                <p>4. Loro ___ addormentano tardi. (addormentarsi)</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>✅ Soluzioni</h4>
+                <p><strong>Esercizio 1:</strong> 1. L' — 2. La — 3. I — 4. L'</p>
+                <p><strong>Esercizio 2:</strong> 1. parlo — 2. mangi — 3. dorme — 4. studiamo — 5. sono — 6. ho</p>
+                <p><strong>Esercizio 3:</strong> 1. sono — 2. siamo — 3. è — 4. è</p>
+                <p><strong>Esercizio 4:</strong> 1. non — 2. non — 3. non / abbiamo — 4. mai</p>
+                <p><strong>Esercizio 5:</strong> 1. mi — 2. ti — 3. ci — 4. si</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2027 From Bac-2-Fac - Tutti i diritti riservati<br>📧 ahmedaminebadrii@gmail.com | 📞 25080244</p>
+    </footer>
+
+    <script src="../../Shared/script.js"></script>
+</body>
+</html>

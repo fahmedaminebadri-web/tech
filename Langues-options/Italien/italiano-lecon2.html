@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lezione 2: Capire i testi e rispondere</title>
+    <link rel="stylesheet" href="../../Shared/style.css">
+    <style>
+        .info-content { background: var(--bg-white); border-radius: var(--radius-xl); padding: 28px; margin-bottom: 28px; box-shadow: var(--shadow-md); border: 1px solid var(--border-light); }
+        .info-content h3 { color: var(--primary); font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .info-content p { margin-bottom: 12px; line-height: 1.8; color: var(--text-dark); }
+        .code-box { background: #1E1E1E; border-radius: var(--radius-lg); padding: 18px 22px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 0.95rem; color: #D4D4D4; overflow-x: auto; }
+        .code-box .code-title { font-size: 0.85rem; color: #888; margin-bottom: 8px; font-family: 'Segoe UI', sans-serif; }
+        .example-box { background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border-left: 4px solid var(--success); padding: 18px 22px; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: 16px 0; }
+        .example-box h4 { color: #166534; font-size: 0.95rem; margin-bottom: 8px; }
+        .example-box p { margin-bottom: 6px; color: #14532d; }
+        .warning-box { background: linear-gradient(135deg, #FEF9C3, #FEF08A); border-left: 4px solid var(--warning); padding: 18px 22px; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: 16px 0; }
+        .warning-box h4 { color: #B45309; font-size: 0.95rem; margin-bottom: 8px; }
+        .key-points { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin: 16px 0; }
+        .key-point { background: var(--bg-gray-50); padding: 14px; border-radius: var(--radius-lg); border: 1px solid var(--border-light); display: flex; gap: 12px; align-items: flex-start; }
+        .key-point .icon { font-size: 1.3rem; flex-shrink: 0; }
+        .key-point p { font-size: 0.88rem; margin: 0; line-height: 1.5; }
+        .toc { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border-radius: var(--radius-xl); padding: 24px; margin-bottom: 28px; border: 1px solid #BFDBFE; }
+        .toc h3 { color: #1D4ED8; margin-bottom: 14px; font-size: 1.05rem; }
+        .toc ol { padding-left: 22px; }
+        .toc li { margin-bottom: 8px; color: var(--text-dark); font-size: 0.92rem; }
+        .toc li a { color: var(--primary); font-weight: 500; }
+        .toc li a:hover { text-decoration: underline; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+        .comparison-table th { background: var(--primary); color: white; padding: 12px; text-align: left; }
+        .comparison-table td { padding: 10px; border: 1px solid var(--border-light); }
+        .comparison-table tr:nth-child(even) { background: var(--bg-gray-50); }
+        .subsection { background: #f7fafc; border-radius: 12px; padding: 18px; margin: 16px 0; border-left: 4px solid var(--primary); }
+        .subsection h4 { color: var(--primary); font-size: 1rem; margin-bottom: 10px; }
+        .subsection p { font-size: 0.9rem; line-height: 1.7; }
+        .highlight { background: #fef3c7; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+        ul { padding-left: 22px; margin: 10px 0; }
+        ul li { margin-bottom: 6px; font-size: 0.9rem; line-height: 1.6; }
+        .flex-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 14px 0; }
+        .mini-card { background: var(--bg-gray-50); padding: 12px; border-radius: 10px; border: 1px solid var(--border-light); }
+        .mini-card strong { color: var(--primary); font-size: 0.85rem; display: block; margin-bottom: 4px; }
+        .mini-card p { font-size: 0.82rem; margin: 0; color: #555; }
+        .exercise { background: #fff5f5; border: 2px dashed #fc8181; border-radius: 12px; padding: 18px; margin: 16px 0; }
+        .exercise h4 { color: #c53030; font-size: 0.95rem; margin-bottom: 8px; }
+        .exercise p { color: #742a2a; font-size: 0.88rem; margin-bottom: 5px; }
+        .info-inline { background: #e6f3ff; border-left: 4px solid #3182ce; padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 12px 0; }
+        .info-inline p { color: #1e4e79; font-size: 0.88rem; margin: 0; }
+        .flow-step { display: flex; align-items: center; gap: 12px; margin: 12px 0; }
+        .flow-num { background: var(--primary); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 0.9rem; }
+        .flow-text { background: var(--bg-gray-50); padding: 12px 16px; border-radius: 10px; flex: 1; font-size: 0.9rem; }
+        .tip-box { background: #faf5ff; border-left: 4px solid #805ad5; padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 12px 0; }
+        .tip-box h4 { color: #6b46c1; font-size: 0.9rem; margin-bottom: 6px; }
+        .tip-box p { color: #44337a; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <a href="../../index.html" class="logo">
+                <img src="../../imgs/badri.png" alt="Logo" class="logo-image">
+                <span class="logo-text">From Bac-2-Fac</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../../index.html">Accueil</a>
+                <a href="../../Mathematiques/mathematiques.html">Math</a>
+                <a href="../../Physique/physique.html">Physique</a>
+                <a href="../../Sciences/sciences.html">Science</a>
+                <a href="../../Langues/Francais/francais.html">Français</a>
+                <a href="../../Langues/Anglais/anglais.html">Anglais</a>
+                <a href="../../Sciences-Humaines/Philosophie/philosophie.html">Philo</a>
+                <a href="../../Langues/Arabe/arabe.html">Arabe</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="container">
+        <a href="italiano.html" class="back-btn">← Torna all'Opzione Italiano</a>
+
+        <!-- HEADER LEÇON -->
+        <div class="lesson-header">
+            <h1>Lezione 2: Capire i testi e rispondere</h1>
+            <p class="breadcrumb">Italiano > Lezione 2</p>
+        </div>
+
+        <!-- PLAN -->
+        <div class="toc">
+            <h3>📋 Indice</h3>
+            <ol>
+                <li><a href="#parte1">Cos'è la comprensione del testo?</a></li>
+                <li><a href="#parte2">Strategie per la comprensione</a></li>
+                <li><a href="#parte3">Tipi di domande al Baccalauréat</a></li>
+                <li><a href="#parte4">Il metodo SQARC</a></li>
+                <li><a href="#parte5">Esempi ed esercizi</a></li>
+                <li><a href="#parte6">Espressioni utili</a></li>
+                <li><a href="#parte7">Errori frequenti</a></li>
+                <li><a href="#parte8">Esercizi di autovalutazione</a></li>
+            </ol>
+        </div>
+
+        <!-- PARTE 1 -->
+        <div class="info-content" id="parte1">
+            <h3>📘 1. Cos'è la comprensione del testo?</h3>
+            
+            <p>La <strong>comprensione del testo</strong> (Compréhension écrite) è una parte importante del Baccalauréat. Devi leggere un testo in italiano e rispondere a domande su di esso. Misura quanto bene sai:</p>
+            
+            <div class="key-points">
+                <div class="key-point">
+                    <span class="icon">📖</span>
+                    <p><strong>Capire l'idea principale</strong> — Di cosa parla il testo?</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">🔍</span>
+                    <p><strong>Trovare informazioni specifiche</strong> — Quando? Dove? Chi? Cosa?</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">📝</span>
+                    <p><strong>Capire il significato</strong> — Cosa vuol dire l'autore?</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">🎯</span>
+                    <p><strong>Tirare conclusioni</strong> — Cosa si può dedurre?</p>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h4>📌 Tipi di testi al Baccalauréat</h4>
+                <p>All'esame del Baccalauréat tunisino puoi trovare questi tipi di testi:</p>
+                <ul>
+                    <li><strong>Lettera / Email:</strong> Comunicazione informale o formale</li>
+                    <li><strong>Articolo:</strong> Articolo di giornale o rivista</li>
+                    <li><strong>Conversazione / Dialogo:</strong> Conversazione tra due o più persone</li>
+                    <li><strong>Descrizione:</strong> Descrizione di qualcuno o qualcosa</li>
+                    <li><strong>Narrazione:</strong> Una storia o esperienza personale</li>
+                    <li><strong>Forum / Commento:</strong> Opinione espressa su internet</li>
+                </ul>
+            </div>
+            
+            <div class="info-inline">
+                <p><strong>📌 Struttura di un testo tipico del Baccalauréat:</strong> Un testo del Baccalauréat ha di solito tra 80-150 parole e contiene: un'introduzione (Chi? Cosa? Dove? Quando?), un corpo con informazioni e dettagli, e una conclusione o opinione personale.</p>
+            </div>
+        </div>
+
+        <!-- PARTE 2 -->
+        <div class="info-content" id="parte2">
+            <h3>📗 2. Strategie per la comprensione</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🔹 Strategia 1: Leggi le domande PRIMA!</h4>
+            <p><strong>LEGGI SEMPRE LE DOMANDE PRIMA DI LEGGERE IL TESTO!</strong> Questa è la strategia più importante.</p>
+            
+            <div class="flow-step">
+                <div class="flow-num">1</div>
+                <div class="flow-text"><strong>Passo:</strong> Leggi le domande 1-5 PRIMA di leggere il testo.</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">2</div>
+                <div class="flow-text"><strong>Passo:</strong> Sottolinea le parole chiave nelle domande (es.: "Quando?", "Chi?", "Cosa?", "Perché?").</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">3</div>
+                <div class="flow-text"><strong>Passo:</strong> Leggi il testo e cerca le informazioni specifiche.</div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num">4</div>
+                <div class="flow-text"><strong>Passo:</strong> Rispondi alle domande.</div>
+            </div>
+            
+            <div class="example-box">
+                <h4>💡 Esempio pratico</h4>
+                <p><strong>Domanda:</strong> Quando va l'alunno a scuola?</p>
+                <p><strong>Parola chiave:</strong> "Quando" + "scuola" → Cerco un'indicazione di tempo + scuola nel testo.</p>
+                <p><strong>Frammento del testo:</strong> "Mi sveglio alle sei e mezza e vado a scuola alle sette e tre quarti."</p>
+                <p><strong>Risposta:</strong> Va a scuola alle sette e tre quarti.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Strategia 2: Lettura attiva</h4>
+            
+            <p><strong>• Passo 1: Lettura veloce (Skimming)</strong></p>
+            <p>Leggi il testo rapidamente (2-3 minuti) per capire l'<strong>idea principale</strong>:</p>
+            <ul>
+                <li>Leggi le <strong>prime</strong> e <strong>ultime</strong> frasi di ogni paragrafo</li>
+                <li>Fai attenzione alle parole in <strong>grassetto</strong> o <strong>sottolineate</strong></li>
+                <li>Chiediti: Di cosa parla? Chi è il personaggio principale? Cosa succede?</li>
+            </ul>
+            
+            <p style="margin-top:12px;"><strong>• Passo 2: Ricerca specifica (Scanning)</strong></p>
+            <p>Leggi il testo di nuovo più lentamente e cerca <strong>informazioni specifiche</strong>:</p>
+            <ul>
+                <li>Numeri e date (Quando? Quanto? Quanti?)</li>
+                <li>Nomi di persone, luoghi, materie</li>
+                <li>Parole o espressioni ripetute</li>
+                <li>Connettivi (ma, perché, quindi, allora) — mostrano il ragionamento</li>
+            </ul>
+            
+            <div class="tip-box">
+                <h4>🎯 Riconoscere e capire i connettivi</h4>
+                <p>• <strong>e, anche, inoltre</strong> → Addizione</p>
+                <p>• <strong>ma, però, tuttavia</strong> → Contrasto</p>
+                <p>• <strong>perché, infatti, infine</strong> → Ragione / Causa</p>
+                <p>• <strong>quindi, perciò, allora</strong> → Conseguenza</p>
+                <p>• <strong>prima, poi, dopo, infine</strong> → Sequenza temporale</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Strategia 3: Capire le parole dal contesto</h4>
+            <p>Troverai <strong>parole sconosciute</strong>. Usa il <strong>contesto</strong>:</p>
+            
+            <div class="example-box">
+                <h4>💡 Esempio</h4>
+                <p>"Di mattina bevo caffè, ma mangio pane con <strong>marmellata</strong>."</p>
+                <p>Anche se non conosco "marmellata", posso capirla dal contesto: è qualcosa che si mette sul pane.</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Gestione del tempo al Baccalauréat</h4>
+                <p>• Leggere le domande: 2 minuti</p>
+                <p>• Leggere il testo (1ª volta): 3-4 minuti (lettura veloce)</p>
+                <p>• Leggere il testo (2ª volta): 3-4 minuti (ricerca)</p>
+                <p>• Rispondere alle domande: 5-7 minuti</p>
+                <p>• <strong>Totale:</strong> circa 15-20 minuti</p>
+                <p>Smetti di cercare una parola dopo 30 secondi — continua!</p>
+            </div>
+        </div>
+
+        <!-- PARTE 3 -->
+        <div class="info-content" id="parte3">
+            <h3>📙 3. Tipi di domande al Baccalauréat</h3>
+            
+            <p>Al Baccalauréat tunisino ci sono <strong>cinque tipi principali</strong> di domande:</p>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:14px;">🔹 Tipo 1: Domande con parole interrogative</h4>
+            <p>Le domande con parola interrogativa richiedono una <strong>risposta dettagliata</strong> in una frase completa.</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Domanda</th><th>Italiano</th><th>Francese</th><th>Esempio</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Chi?</strong></td><td>Persona / Soggetto</td><td>Qui?</td><td>Chi scrive la lettera?</td></tr>
+                    <tr><td><strong>Cosa?</strong></td><td>Cosa / Attività</td><td>Quoi?</td><td>Cosa fa lui di mattina?</td></tr>
+                    <tr><td><strong>Dove?</strong></td><td>Luogo</td><td>Où?</td><td>Dove abita?</td></tr>
+                    <tr><td><strong>Quando?</strong></td><td>Tempo</td><td>Quand?</td><td>Quando ha lasciato la scuola?</td></tr>
+                    <tr><td><strong>Perché?</strong></td><td>Ragione</td><td>Pourquoi?</td><td>Perché studia italiano?</td></tr>
+                    <tr><td><strong>Come?</strong></td><td>Modo</td><td>Comment?</td><td>Come si sente?</td></tr>
+                    <tr><td><strong>Quanti?</strong></td><td>Quantità / Numero</td><td>Combien?</td><td>Quante ore studia?</td></tr>
+                    <tr><td><strong>Quale?</strong></td><td>Scelta</td><td>Quelle?</td><td>Qual è la sua materia preferita?</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Come rispondere alle domande?</h4>
+                <p><strong>Domanda:</strong> Qual è l'argomento del testo?</p>
+                <p>✗ <strong>Sbagliato:</strong> La scuola.</p>
+                <p>✓ <strong>Giusto:</strong> L'argomento del testo è la scuola.</p>
+                <p>✓ <strong>Giusto:</strong> Il testo parla della scuola.</p>
+                <p><strong>Regola:</strong> RISPONDI SEMPRE con una <strong>frase completa</strong>!</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Tipo 2: Vero o Falso (Vrai ou Faux)</h4>
+            <p>In questo tipo di domanda devi decidere se un'affermazione è <strong>vera</strong> o <strong>falsa</strong>, o se l'informazione <strong>non è menzionata</strong> nel testo.</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>La tua risposta</th><th>Significato</th><th>Francese</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Vero</strong></td><td>L'affermazione corrisponde al testo.</td><td>Vrai</td></tr>
+                    <tr><td><strong>Falso</strong></td><td>L'affermazione contraddice il testo.</td><td>Faux</td></tr>
+                    <tr><td><strong>Non menzionato</strong></td><td>Il testo non dà informazioni a riguardo.</td><td>Non mentionné</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <h4>💡 Esempio completo</h4>
+                <p><strong>Testo:</strong> "Mi chiamo Youssef. Ho diciotto anni e sono al liceo. Abito a Sfax con la mia famiglia."</p>
+                <p>1. Youssef ha 17 anni. → <strong>FALSO</strong> (Ha 18.)</p>
+                <p>2. Youssef abita a Sfax. → <strong>VERO</strong></p>
+                <p>3. Ha fratelli. → <strong>NON MENZIONATO</strong></p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Errore frequente</h4>
+                <p>Molti alunni scelgono solo due opzioni (VERO o FALSO) e dimenticano la terza possibilità: <strong>"Non menzionato"</strong>.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Tipo 3: Scelta multipla</h4>
+            
+            <div class="example-box">
+                <h4>💡 Strategia</h4>
+                <p><strong>Domanda:</strong> Qual è l'argomento del testo?</p>
+                <p>a) La scuola ✓</p>
+                <p>b) Lo sport ✗</p>
+                <p>c) Il cibo ✗</p>
+                <p>1. Leggi le tre opzioni.</p>
+                <p>2. Elimina le opzioni ovviamente sbagliate.</p>
+                <p>3. Confronta le opzioni restanti con il testo.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Tipo 4: Domande sul significato generale</h4>
+            <p>Queste domande richiedono un'<strong>interpretazione personale</strong> o una <strong>conclusione</strong> dal testo.</p>
+            <ul>
+                <li>Qual è l'opinione dell'autore sull'argomento?</li>
+                <li>Cosa si può dedurre dal testo?</li>
+                <li>Qual è l'intenzione dell'autore?</li>
+                <li>Come si sente il personaggio principale?</li>
+            </ul>
+        </div>
+
+        <!-- PARTE 4 -->
+        <div class="info-content" id="parte4">
+            <h3>📕 4. Il metodo SQARC</h3>
+            
+            <p>Il metodo <strong>SQARC</strong> è il metodo ufficiale per la comprensione del testo al Baccalauréat tunisino:</p>
+            
+            <div class="key-points">
+                <div class="key-point">
+                    <span class="icon">S</span>
+                    <p><strong>S</strong> = Search — Cerca le informazioni rilevanti nel testo.</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">Q</span>
+                    <p><strong>Q</strong> = Question — Capisci esattamente la domanda.</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">R</span>
+                    <p><strong>R</strong> = Read — Leggi il paragrafo con la risposta.</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">A</span>
+                    <p><strong>A</strong> = Answer — Formula la tua risposta.</p>
+                </div>
+                <div class="key-point">
+                    <span class="icon">C</span>
+                    <p><strong>C</strong> = Check — Verifica la tua risposta.</p>
+                </div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:16px;">🔹 Passo S — Search (Cercare)</h4>
+            <p><strong>Cosa?</strong> Trova le informazioni rilevanti nel testo che corrispondono alla domanda.</p>
+            <ul>
+                <li>Leggi di nuovo la domanda e sottolinea la <strong>parola chiave</strong></li>
+                <li>Cerca nel testo quella parola o <strong>espressioni simili</strong></li>
+                <li>Leggi il <strong>paragrafo completo</strong>, non solo la frase con la parola chiave</li>
+            </ul>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:14px;">🔹 Passo Q — Question (Domanda)</h4>
+            <p><strong>Cosa?</strong> Capisci esattamente cosa ti viene chiesto.</p>
+            <ul>
+                <li>Che tipo di domanda è? (Chi? Cosa? Perché? Vero/Falso?)</li>
+                <li>Cosa devo rispondere esattamente?</li>
+                <li>C'è un numero specifico di risposte? (Es.: "Indica due ragioni.")</li>
+            </ul>
+            
+            <div class="example-box">
+                <h4>💡 Esempio</h4>
+                <p><strong>Domanda:</strong> Indica <strong>due</strong> hobby di Ahmed.</p>
+                <p>Qui devo dare DUE risposte! Non solo una!</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:14px;">🔹 Passo R — Read (Leggere)</h4>
+            <p><strong>Cosa?</strong> Leggi il paragrafo che contiene la risposta in modo completo.</p>
+            <ul>
+                <li>Non leggere solo la frase con la parola chiave</li>
+                <li>Leggi il <strong>paragrafo completo</strong> per capire il contesto</li>
+                <li>Fai attenzione ai <strong>connettivi</strong> (e, ma, perché, quindi)</li>
+            </ul>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:14px;">🔹 Passo A — Answer (Rispondere)</h4>
+            <p><strong>Cosa?</strong> Formula la tua risposta in modo chiaro e completo.</p>
+            <ul>
+                <li>Usa <strong>frasi complete</strong>, non solo parole sparse</li>
+                <li>Inizia con la <strong>parola interrogativa</strong> o con <strong>"Secondo il testo..."</strong></li>
+                <li>Non <strong>copiare</strong> ciecamente dal testo — riassumi</li>
+            </ul>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:14px;">🔹 Passo C — Check (Verificare)</h4>
+            <p><strong>Cosa?</strong> Verifica la tua risposta prima di passare al prossimo argomento.</p>
+            <ul>
+                <li>La mia risposta è <strong>completa</strong>?</li>
+                <li>La mia risposta è <strong>scritta bene</strong>?</li>
+                <li>La mia risposta <strong>corrisponde</strong> al testo?</li>
+                <li>Ho risposto a <strong>tutte le parti</strong> della domanda?</li>
+            </ul>
+            
+            <div class="tip-box">
+                <h4>🎯 Mnemonico SQARC</h4>
+                <p><strong>S</strong> — Search — Cerca le parole chiave</p>
+                <p><strong>Q</strong> — Question — Capisci la domanda</p>
+                <p><strong>R</strong> — Read — Leggi il paragrafo</p>
+                <p><strong>A</strong> — Answer — Formula la risposta</p>
+                <p><strong>C</strong> — Check — Verifica la risposta</p>
+            </div>
+        </div>
+
+        <!-- PARTE 5 -->
+        <div class="info-content" id="parte5">
+            <h3>📘 5. Esempi ed esercizi</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">📖 Testo di esempio: La mia routine quotidiana</h4>
+            <div class="code-box">
+                <div class="code-title">Testo: La mia routine quotidiana</div>
+                <p>Mi chiamo Sami. Ho diciassette anni e sono al liceo in un liceo di Tunisi. Ogni mattina mi sveglio alle sei. Poi mi faccio la doccia e faccio colazione con la mia famiglia. Alle sette meno un quarto prendo l'autobus per andare a scuola.</p>
+                <p>Le lezioni iniziano alle otto. Ho molte materie, ma la mia materia preferita è l'italiano, perché la nostra professoressa è molto simpatica. A mezzogiorno mangio alla mensa della scuola. Dopo ho educazione fisica o incontro i miei amici nel cortile.</p>
+                <p>Di pomeriggio sto a casa. Prima faccio i compiti. Poi studio per gli esami o leggo un libro. Di sera ceniamo insieme con la famiglia. A volte guardo la televisione o navigo su internet.</p>
+                <p>Il fine settimana ho più tempo libero. Gioco a calcio con i miei amici o visito i miei nonni. Sono content della mia vita, ma mi piacerebbe avere più tempo per i miei hobby.</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:16px;">❓ Domande e risposte modello</h4>
+            
+            <div class="exercise">
+                <h4>Domanda 1: Quanti anni ha Sami?</h4>
+                <p><strong>Risposta:</strong> Sami ha diciassette anni.</p>
+                <p><em>Strategia: Cerca la parola "diciassette" nel testo.</em></p>
+            </div>
+            
+            <div class="exercise">
+                <h4>Domanda 2: Cosa fa Sami ogni mattina prima di andare a scuola?</h4>
+                <p><strong>Risposta:</strong> Ogni mattina si sveglia alle sei. Poi si fa la doccia e fa colazione con la sua famiglia.</p>
+                <p><em>Strategia: Cerca "ogni mattina" e leggi la frase completa.</em></p>
+            </div>
+            
+            <div class="exercise">
+                <h4>Domanda 3: Qual è la sua materia preferita e perché?</h4>
+                <p><strong>Risposta:</strong> La sua materia preferita è l'italiano, perché la professoressa è molto simpatica.</p>
+                <p><em>Strategia: Cerca "materia preferita" e leggi la frase con "perché".</em></p>
+            </div>
+            
+            <div class="exercise">
+                <h4>Domanda 4: Vero o Falso?</h4>
+                <p>a) Sami va a scuola in macchina. → <strong>FALSO</strong> (Va in autobus.)</p>
+                <p>b) A mezzogiorno mangia alla mensa della scuola. → <strong>VERO</strong></p>
+                <p>c) Sami gioca a calcio tutti i giorni. → <strong>NON MENZIONATO</strong> (Solo il fine settimana.)</p>
+                <p>d) Sami è content della sua vita. → <strong>VERO</strong></p>
+            </div>
+            
+            <div class="exercise">
+                <h4>Domanda 5: Cosa vorrebbe Sami?</h4>
+                <p><strong>Risposta:</strong> A Sami piacerebbe avere più tempo per i suoi hobby.</p>
+                <p><em>Strategia: Cerca "mi piacerebbe" alla fine del testo.</em></p>
+            </div>
+        </div>
+
+        <!-- PARTE 6 -->
+        <div class="info-content" id="parte6">
+            <h3>📗 6. Espressioni utili</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">🔹 Espressioni per introdurre la risposta</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>Secondo il testo...</strong><p>D'après le texte...</p></div>
+                <div class="mini-card"><strong>Nel testo si dice che...</strong><p>Dans le texte, il est dit que...</p></div>
+                <div class="mini-card"><strong>Il testo dice che...</strong><p>Le texte dit que...</p></div>
+                <div class="mini-card"><strong>In base al testo...</strong><p>Selon le texte...</p></div>
+                <div class="mini-card"><strong>Come indicato nel testo...</strong><p>Comme mentionné dans le texte...</p></div>
+                <div class="mini-card"><strong>Il testo parla di...</strong><p>Le texte parle de...</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Espressioni per Vero/Falso</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>L'affermazione è vera.</strong><p>L'affirmation est vraie.</p></div>
+                <div class="mini-card"><strong>L'affermazione è falsa.</strong><p>L'affirmation est fausse.</p></div>
+                <div class="mini-card"><strong>Il testo non lo menziona.</strong><p>Le texte ne le mentionne pas.</p></div>
+                <div class="mini-card"><strong>Questo non è nel testo.</strong><p>Cela ne figure pas dans le texte.</p></div>
+                <div class="mini-card"><strong>Il testo dice che...</strong><p>Le texte dit que...</p></div>
+                <div class="mini-card"><strong>Non è lo stesso del testo.</strong><p>Ce n'est pas la même chose.</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Espressioni per sentimenti e opinioni</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>È content/a di...</strong><p>Il/Elle est content(e) de...</p></div>
+                <div class="mini-card"><strong>È felice/felice di...</strong><p>Il/Elle est heureux(se) de...</p></div>
+                <div class="mini-card"><strong>È triste per...</strong><p>Il/Elle est triste de...</p></div>
+                <div class="mini-card"><strong>Gli/Le piacerebbe...</strong><p>Il/Elle souhaiterait...</p></div>
+                <div class="mini-card"><strong>Crede che...</strong><p>Il/Elle pense que...</p></div>
+                <div class="mini-card"><strong>È dell'opinione che...</strong><p>Il/Elle est d'avis que...</p></div>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:20px;">🔹 Espressioni per riassumere</h4>
+            <div class="flex-grid">
+                <div class="mini-card"><strong>L'argomento del testo è...</strong><p>Le thème du texte est...</p></div>
+                <div class="mini-card"><strong>Il testo parla di...</strong><p>Le texte parle de...</p></div>
+                <div class="mini-card"><strong>Nel testo si parla di...</strong><p>Dans le texte, il est question de...</p></div>
+                <div class="mini-card"><strong>In sintesi...</strong><p>En résumé...</p></div>
+                <div class="mini-card"><strong>L'autore descrive...</strong><p>L'auteur décrit...</p></div>
+                <div class="mini-card"><strong>Il personaggio principale è...</strong><p>Le personnage principal est...</p></div>
+            </div>
+        </div>
+
+        <!-- PARTE 7 -->
+        <div class="info-content" id="parte7">
+            <h3>📙 7. Errori frequenti</h3>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Errore</th><th>Giusto</th><th>Spiegazione</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>✗ La scuola.</td>
+                        <td>✓ L'argomento è la scuola.</td>
+                        <td>Rispondi sempre con frasi complete.</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Scegliere solo tra "Vero" o "Falso".</td>
+                        <td>✓ Scegliere: Vero, Falso o Non menzionato.</td>
+                        <td>Ci sono sempre tre opzioni!</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Copiare la risposta dal testo senza capirla.</td>
+                        <td>✓ Capire e riformulare.</td>
+                        <td>Mostra che hai capito.</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Passare troppo tempo con parole sconosciute.</td>
+                        <td>✓ Continuare e usare il contesto.</td>
+                        <td>Il tempo è limitato — dai priorità!</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Leggere solo la prima parte del testo.</td>
+                        <td>✓ Leggere il paragrafo completo.</td>
+                        <td>La risposta può essere in un'altra parte.</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Scrivere una parola quando si chiede una frase.</td>
+                        <td>✓ Scrivere sempre una frase completa.</td>
+                        <td>Deduzione frequente nella valutazione.</td>
+                    </tr>
+                    <tr>
+                        <td>✗ Usare francese nella risposta in italiano.</td>
+                        <td>✓ Rispondere in italiano.</td>
+                        <td>La lingua dell'esame è l'italiano.</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="info-inline">
+                <p><strong>✅ Regole d'oro per la comprensione del testo:</strong></p>
+                <p>1. <strong>LEGGI LE DOMANDE PRIMA!</strong></p>
+                <p>2. Rispondi con <strong>FRASI COMPLETE</strong>.</p>
+                <p>3. Ci sono <strong>TRE</strong> possibilità: Vero, Falso o Non menzionato.</p>
+                <p>4. <strong>GESTIONE DEL TEMPO:</strong> 15-20 minuti per la comprensione del testo.</p>
+                <p>5. <strong>VERIFICA</strong> le tue risposte alla fine.</p>
+            </div>
+        </div>
+
+        <!-- PARTE 8 -->
+        <div class="info-content" id="parte8">
+            <h3>📕 8. Esercizi di autovalutazione</h3>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:10px;">📖 Esercizio 1: Una lettera</h4>
+            <div class="code-box">
+                <div class="code-title">Testo: Una lettera</div>
+                <p>Caro Ahmed:</p>
+                <p>Grazie mille per la tua lettera. Mi fa piacere avere tue notizie. Mi chiamo Lena e ho sedici anni. Abito a Roma con i miei genitori e il mio fratellino. Vado a scuola e studio italiano da tre anni.</p>
+                <p>La mia scuola è grande e ha un giardino bellissimo. Ho molti amici lì. Quello che mi piace di più è la lezione di educazione fisica, perché di solito giochiamo a calcio. Dopo la scuola incontro i miei amici o leggo libri.</p>
+                <p>Cosa fai tu dopo la scuola? Scrivimi presto!</p>
+                <p>Un saluto,<br>Lena</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>1. Come si chiama chi scrive?</h4>
+                <p>_____________________________________________</p>
+            </div>
+            <div class="exercise">
+                <h4>2. Dove abita?</h4>
+                <p>_____________________________________________</p>
+            </div>
+            <div class="exercise">
+                <h4>3. Qual è la sua materia preferita e perché?</h4>
+                <p>_____________________________________________</p>
+            </div>
+            <div class="exercise">
+                <h4>4. Vero o Falso?</h4>
+                <p>a) Lena ha 15 anni. → _________</p>
+                <p>b) Ha un fratellino. → _________</p>
+                <p>c) Studia italiano da un anno. → _________</p>
+                <p>d) La sua scuola ha un giardino. → _________</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>✅ Risposte modello</h4>
+                <p>1. Chi scrive si chiama Lena.</p>
+                <p>2. Abita a Roma con i suoi genitori.</p>
+                <p>3. La sua materia preferita è l'educazione fisica, perché di solito giocano a calcio.</p>
+                <p>4a) Falso — b) Vero — c) Falso (da tre anni) — d) Vero</p>
+            </div>
+            
+            <h4 style="color:var(--accent); font-size:1rem; margin-top:24px;">📖 Esercizio 2: Vivere in modo sano</h4>
+            <div class="code-box">
+                <div class="code-title">Testo: Vivere in modo sano</div>
+                <p>Come si può vivere in modo sano? Questa è una domanda importante per i giovani. Prima di tutto, si deve mangiare frutta e verdura ogni giorno. In secondo luogo, lo sport è molto importante. Si deve fare sport almeno tre volte a settimana. In terzo luogo, bisogna dormire abbastanza — almeno otto ore per notte. Infine, è importante anche bere molta acqua e non passare troppo tempo davanti allo schermo.</p>
+            </div>
+            
+            <div class="exercise">
+                <h4>1. Qual è l'argomento del testo?</h4>
+                <p>_____________________________________________</p>
+            </div>
+            <div class="exercise">
+                <h4>2. Quante volte si deve fare sport?</h4>
+                <p>_____________________________________________</p>
+            </div>
+            <div class="exercise">
+                <h4>3. Vero o Falso?</h4>
+                <p>a) Si deve mangiare cioccolato ogni giorno. → _________</p>
+                <p>b) Lo sport è importante. → _________</p>
+                <p>c) Si deve bere poca acqua. → _________</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>✅ Risposte modello</h4>
+                <p>1. L'argomento del testo è come vivere in modo sano.</p>
+                <p>2. Si deve fare sport almeno tre volte a settimana.</p>
+                <p>3a) Falso — b) Vero — c) Falso (Si deve bere molta acqua.)</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2027 From Bac-2-Fac - Tutti i diritti riservati<br>📧 ahmedaminebadrii@gmail.com | 📞 25080244</p>
+    </footer>
+
+    <script src="../../Shared/script.js"></script>
+</body>
+</html>
